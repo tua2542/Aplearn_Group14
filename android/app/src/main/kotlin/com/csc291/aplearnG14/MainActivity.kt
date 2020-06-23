@@ -1,4 +1,4 @@
-package com.example.aplearn_group14
+package com.csc291.aplearnG14
 
 import io.flutter.embedding.android.FlutterActivity
 
