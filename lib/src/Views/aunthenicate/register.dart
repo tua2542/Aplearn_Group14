@@ -79,7 +79,7 @@ class _RegisterState extends State<Register> {
                         loading = false;
                         error = 'Please supply a valid email';
                       });
-                    }
+                    } 
                   }
                 }
               ),
