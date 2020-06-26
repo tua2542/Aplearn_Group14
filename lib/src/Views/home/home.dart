@@ -1,4 +1,5 @@
 import 'package:aplearn_group14/src/Presenters/auth.dart';
+import 'package:aplearn_group14/src/Views/aunthenicate/aunthenicate.dart';
 import 'package:flutter/material.dart';
 
 
@@ -47,7 +48,12 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               icon: Icon(Icons.person),
               label: Text('logout'),
               onPressed: () async {
-                await _auth.signOut();
+                if(_auth.signOut() != null) {
+               Navigator.pushAndRemoveUntil(
+                                 context, 
+                                 MaterialPageRoute(builder: (context) => BeforeAuth()), 
+                                 (route) => false);
+                }
               },
             ),
         ],

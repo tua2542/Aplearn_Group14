@@ -1,12 +1,13 @@
 import 'package:aplearn_group14/src/Presenters/auth.dart';
+import 'package:aplearn_group14/src/Views/aunthenicate/register.dart';
 import 'package:aplearn_group14/src/shared/constants.dart';
 import 'package:aplearn_group14/src/shared/loading.dart';
+import 'package:aplearn_group14/src/wrapper.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 
 class SignIn extends StatefulWidget {
-  final Function toggleView;
-  SignIn({this.toggleView});
+
 
   @override
   _SignInState createState() => _SignInState();
@@ -36,7 +37,11 @@ class _SignInState extends State<SignIn> {
                 FlatButton.icon(
                   icon: Icon(Icons.person),
                   label: Text('Register'),
-                  onPressed: () => widget.toggleView(),
+                  onPressed: () async {
+                      Navigator.push(
+                                 context, 
+                                 MaterialPageRoute(builder: (context) => Register()));
+                  }
                 ),
               ],
             ),
@@ -85,6 +90,11 @@ class _SignInState extends State<SignIn> {
                                 error =
                                     'Could not sign in with those credentials';
                               });
+                            } else {
+                               Navigator.pushAndRemoveUntil(
+                                 context, 
+                                 MaterialPageRoute(builder: (context) => Wrapper()), 
+                                 (route) => false);
                             }
                           }
                         }),
