@@ -1,5 +1,6 @@
 import 'package:aplearn_group14/src/Views/aunthenicate/sign_in.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Authenticate extends StatefulWidget {
   @override
@@ -7,11 +8,13 @@ class Authenticate extends StatefulWidget {
 }
 
 class _AuthenticateState extends State<Authenticate> {
-  bool showSignIn = true;
-  void toggleView() {
-    setState(() => showSignIn = !showSignIn);
+final Uri _emailLaunchUri = Uri(
+  scheme: 'mailto',
+  path: 'sakdipat3536@gmail.com',
+  queryParameters: {
+    'subject': 'Recruitment_with_Aplearn'
   }
-
+);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,15 +22,26 @@ class _AuthenticateState extends State<Authenticate> {
         padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
         child: Column(
           children: <Widget>[
+            //Sign In / Register
             RaisedButton(
                 color: Colors.pink[400],
                 child: Text(
-                  'Sign In',
+                  'Sign In / Register',
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () async {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => SignIn()));
+                }),
+
+                RaisedButton(
+                color: Colors.pink[400],
+                child: Text(
+                  'Work with us',
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () async {
+                  launch(_emailLaunchUri.toString());
                 }),
           ],
         ),
@@ -61,15 +75,7 @@ class _BeforeAuthState extends State<BeforeAuth> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Aplearn'),
-        // actions: <Widget>[
-        //         FlatButton.icon(
-        //       icon: Icon(Icons.person),
-        //       label: Text('logout'),
-        //       onPressed: () async {
-        //         await _auth.signOut();
-        //       },
-        //     ),
-        // ],
+
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
@@ -123,27 +129,3 @@ class SchoolPage extends StatelessWidget {
   }
 }
 
-// class OtherPage extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: Container(
-//         padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
-//         child: Column(
-//           children: <Widget>[
-//             RaisedButton(
-//                 color: Colors.pink[400],
-//                 child: Text(
-//                   'Sign In',
-//                   style: TextStyle(color: Colors.white),
-//                 ),
-//                 onPressed: () async {
-//                   Navigator.push(context,
-//                       MaterialPageRoute(builder: (context) => Authenticate()));
-//                 }),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
