@@ -32,11 +32,12 @@ dependencies:
   cloud_firestore: ^0.13.7
   firebase_core: ^0.4.5
   firebase_analytics: ^5.0.15
+  firebase_admin: ^0.1.2+1
   flushbar: ^1.9.1
   provider: ^4.0.5
   flutter_spinkit: "^4.1.2"
   url_launcher: ^5.4.11
-
+  stripe_payment: ^1.0.7
   
 dev_dependencies:
   flutter_test:

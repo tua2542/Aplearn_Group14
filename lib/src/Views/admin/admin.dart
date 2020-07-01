@@ -1,69 +1,37 @@
+import 'package:aplearn_group14/src/Presenters/auth.dart';
 import 'package:aplearn_group14/src/Presenters/paymentservice.dart';
-import 'package:aplearn_group14/src/Views/aunthenicate/sign_in.dart';
+import 'package:aplearn_group14/src/Views/aunthenicate/aunthenicate.dart';
 import 'package:flutter/material.dart';
-import 'package:stripe_payment/stripe_payment.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:stripe_payment/stripe_payment.dart';
 
-class Authenticate extends StatefulWidget {
-  @override
-  _AuthenticateState createState() => _AuthenticateState();
-}
+class AdminPage extends StatelessWidget {
+  static const String _title = 'Flutter Code Sample';
 
-class _AuthenticateState extends State<Authenticate> {
-final Uri _emailLaunchUri = Uri(
-  scheme: 'mailto',
-  path: 'sakdipat3536@gmail.com',
-  queryParameters: {
-    'subject': 'Recruitment_with_Aplearn'
-  }
-);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
-        child: Column(
-          children: <Widget>[
-            //Sign In / Register
-            RaisedButton(
-                color: Colors.pink[400],
-                child: Text(
-                  'Sign In / Register',
-                  style: TextStyle(color: Colors.white),
-                ),
-                onPressed: () async {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SignIn()));
-                }),
-
-                RaisedButton(
-                color: Colors.pink[400],
-                child: Text(
-                  'Work with us',
-                  style: TextStyle(color: Colors.white),
-                ),
-                onPressed: () async {
-                  launch(_emailLaunchUri.toString());
-                }),
-          ],
-        ),
-      ),
+    return MaterialApp(
+      title: _title,
+      home: MyStatefulWidget(),
     );
   }
 }
 
-class BeforeAuth extends StatefulWidget {
+class MyStatefulWidget extends StatefulWidget {
+  MyStatefulWidget({Key key}) : super(key: key);
+
   @override
-  _BeforeAuthState createState() => _BeforeAuthState();
+  _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
 }
 
-class _BeforeAuthState extends State<BeforeAuth> {
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  final AuthService _auth = AuthService();
   int _selectedIndex = 0;
   static List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     BusinessPage(),
     SchoolPage(),
-    Authenticate(),
+    Contact(),
   ];
 
   void _onItemTapped(int index) {
@@ -76,8 +44,21 @@ class _BeforeAuthState extends State<BeforeAuth> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Aplearn'),
-
+        title: const Text('Aplearn for Admin'),
+        actions: <Widget>[
+          FlatButton.icon(
+            icon: Icon(Icons.person),
+            label: Text('logout'),
+            onPressed: () async {
+              if (_auth.signOut() != null) {
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => BeforeAuth()),
+                    (route) => false);
+              }
+            },
+          ),
+        ],
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
@@ -180,10 +161,45 @@ class _BusinessPageState extends State<BusinessPage> {
   }
 }
 
+
+
 class SchoolPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Icon(Icons.school, size: 100);
   }
 }
+
+class Contact extends StatelessWidget {
+  final Uri _emailLaunchUri = Uri(
+  scheme: 'mailto',
+  path: 'sakdipat3536@gmail.com',
+  queryParameters: {
+    'subject': 'Recruitment_with_Aplearn'
+  }
+);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
+        child: Column(
+          children: <Widget>[
+            RaisedButton(
+                color: Colors.pink[400],
+                child: Text(
+                  'Work with us',
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () async {
+                  launch(_emailLaunchUri.toString());
+                }),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 

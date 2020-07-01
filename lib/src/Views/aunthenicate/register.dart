@@ -18,6 +18,7 @@ class _RegisterState extends State<Register> {
   // text field state
   String email = '';
   String password = '';
+  String role = 'student';
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +69,7 @@ class _RegisterState extends State<Register> {
                           if (_formKey.currentState.validate()) {
                             setState(() => loading = true);
                             dynamic result = await _auth
-                                .registerWithEmailAndPassword(email, password);
+                                .registerWithEmailAndPassword(email, password, role);
                             if (result == null) {
                               setState(() {
                                 loading = false;

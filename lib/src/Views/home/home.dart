@@ -1,8 +1,9 @@
 import 'package:aplearn_group14/src/Presenters/auth.dart';
+import 'package:aplearn_group14/src/Presenters/paymentservice.dart';
 import 'package:aplearn_group14/src/Views/aunthenicate/aunthenicate.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-
+import 'package:stripe_payment/stripe_payment.dart';
 class Home extends StatelessWidget {
   static const String _title = 'Flutter Code Sample';
 
@@ -96,12 +97,70 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class BusinessPage extends StatelessWidget {
+class BusinessPage extends StatefulWidget {
+  @override
+  _BusinessPageState createState() => _BusinessPageState();
+}
+
+class _BusinessPageState extends State<BusinessPage> {
+  // String _error;
+  // PaymentMethod _paymentMethod;
+  // Token _paymentToken;
+  
+
+  final CreditCard testCard = CreditCard(
+    number: '4000002760003184',
+    expMonth: 12,
+    expYear: 21,
+  );
+
+  // GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+
+  @override
+  initState() {
+    super.initState();
+
+    StripePayment.setOptions(
+        StripeOptions(publishableKey: "pk_test_51GzJm8LlTCGQsQVIfc7l1x4Cf4QM4GX4jxKSxX3WdAZsiLJH5nRiskSMfombF1xgKquF8gPz5peMfpoBNaJ9psEP00i1rSNZtH", 
+        merchantId: "Test", androidPayMode: 'test'));
+  }
+
+  // void setError(dynamic error) {
+  //   _scaffoldKey.currentState.showSnackBar(SnackBar(content: Text(error.toString())));
+  //   setState(() {
+  //     error = error.toString();
+  //   });
+  // }
+
   @override
   Widget build(BuildContext context) {
-    return Icon(Icons.business, size: 100);
+    return Scaffold(
+
+      body: Container(
+        padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
+        child: Column(
+          children: <Widget>[
+            //Sign In / Register
+                RaisedButton(
+                color: Colors.pink[400],
+                child: Text(
+                  'Donate 1 Dollar',
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () async {
+                StripePayment.paymentRequestWithCardForm(CardFormPaymentRequest()).then((token) {
+                  PaymentService().addCard(token);
+                });
+                }),
+          ],
+        ),
+      ),
+
+      );
   }
 }
+
+
 
 class SchoolPage extends StatelessWidget {
   @override
@@ -141,3 +200,5 @@ class Contact extends StatelessWidget {
     );
   }
 }
+
+
