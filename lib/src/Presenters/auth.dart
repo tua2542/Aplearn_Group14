@@ -59,13 +59,14 @@ Future signInWithEmailAndPassword(String email, String password) async {
     }
   }
   //regsiter with email and password
-  Future registerWithEmailAndPassword(String email, String password,String role) async {
+  Future registerWithEmailAndPassword(String email, String password, String firstname, 
+  String lastname, String occupation, String role) async {
     try {
       AuthResult result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
       FirebaseUser user = result.user;
 
       //create a new document for the user with the uid
-      await DatabaseService(uid: user.uid).updateUserData(email,role);
+      await DatabaseService(uid: user.uid).updateUserData(email,firstname,lastname,occupation,role);
       return _userFromFirebaseUser(user);
     } catch(e){
       print(e.toString());

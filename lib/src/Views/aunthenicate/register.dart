@@ -18,6 +18,10 @@ class _RegisterState extends State<Register> {
   // text field state
   String email = '';
   String password = '';
+  String confirmPassword = '';
+  String firstname = '';
+  String lastname = '';
+  String occupation = '';
   String role = 'student';
 
   @override
@@ -46,7 +50,7 @@ class _RegisterState extends State<Register> {
                         setState(() => email = val);
                       },
                     ),
-                    SizedBox(height: 20.0),
+                    SizedBox(height: 10.0),
                     TextFormField(
                       decoration:
                           textInputDecoration.copyWith(hintText: 'password'),
@@ -56,6 +60,33 @@ class _RegisterState extends State<Register> {
                           : null,
                       onChanged: (val) {
                         setState(() => password = val);
+                      },
+                    ),
+                     SizedBox(height: 10.0),
+                     TextFormField(
+                      decoration:
+                          textInputDecoration.copyWith(hintText: 'firstname'),
+                      validator: (val) => val.isEmpty ? 'Enter an firstname' : null,
+                      onChanged: (val) {
+                        setState(() => firstname = val);
+                      },
+                    ),
+                     SizedBox(height: 10.0),
+                     TextFormField(
+                      decoration:
+                          textInputDecoration.copyWith(hintText: 'lastname'),
+                      validator: (val) => val.isEmpty ? 'Enter an lastname' : null,
+                      onChanged: (val) {
+                        setState(() => lastname = val);
+                      },
+                    ),
+                     SizedBox(height: 10.0),
+                     TextFormField(
+                      decoration:
+                          textInputDecoration.copyWith(hintText: 'occupation'),
+                      validator: (val) => val.isEmpty ? 'Enter an occupation' : null,
+                      onChanged: (val) {
+                        setState(() => occupation = val);
                       },
                     ),
                     SizedBox(height: 20.0),
@@ -69,7 +100,7 @@ class _RegisterState extends State<Register> {
                           if (_formKey.currentState.validate()) {
                             setState(() => loading = true);
                             dynamic result = await _auth
-                                .registerWithEmailAndPassword(email, password, role);
+                                .registerWithEmailAndPassword(email,password,firstname,lastname,occupation,role);
                             if (result == null) {
                               setState(() {
                                 loading = false;
