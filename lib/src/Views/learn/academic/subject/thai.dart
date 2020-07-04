@@ -10,18 +10,15 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:transparent_image/transparent_image.dart';
-
 import 'package:path/path.dart' as p;
-
 import 'package:timeago/timeago.dart' as timeago;
 
-void main() => runApp(Thai());
 
 class Thai extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Video Sharing',
+      title: 'Thai',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -215,8 +212,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _takeVideo() async {
     var videoFile;
-    final ImagePicker _picker = ImagePicker();
-
     if (_debugMode) {
       videoFile = File(
           '/storage/emulated/0/Android/data/com.learningsomethingnew.fluttervideo.flutter_video_sharing/files/Pictures/ebbafabc-dcbe-433b-93dd-80e7777ee4704451355941378265171.mp4');
@@ -224,7 +219,7 @@ class _MyHomePageState extends State<MyHomePage> {
       if (_imagePickerActive) return;
 
       _imagePickerActive = true;
-      final   videoFile = await _picker.getVideo(source: ImageSource.gallery);
+      videoFile = await ImagePicker.pickVideo(source: ImageSource.gallery);
       _imagePickerActive = false;
 
       if (videoFile == null) return;
@@ -256,7 +251,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return Player(
+                    return ChewiePlayer(
                       video: video,
                     );
                   },
@@ -340,14 +335,13 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(child: _processing ? _getProgressBar() : _getListView()),
-      floatingActionButton: FloatingActionButton(
-          child: _processing
-              ? CircularProgressIndicator(
-                  valueColor: new AlwaysStoppedAnimation<Color>(Colors.white),
-                )
-              : Icon(Icons.add),
-          onPressed: _takeVideo),
+      // floatingActionButton: FloatingActionButton(
+      //     child: _processing
+      //         ? CircularProgressIndicator(
+      //             valueColor: new AlwaysStoppedAnimation<Color>(Colors.white),
+      //           )
+      //         : Icon(Icons.add),
+      //     onPressed: _takeVideo),
     );
   }
 }
-

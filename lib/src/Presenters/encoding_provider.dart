@@ -17,8 +17,8 @@ class EncodingProvider {
     final arguments = '-y -i $videoPath ' +
         '-preset ultrafast -g 48 -sc_threshold 0 ' +
         '-map 0:0 -map 0:1 -map 0:0 -map 0:1 ' +
-        '-c:v:0 libx264 -b:v:0 2000k ' +
-        '-c:v:1 libx264 -b:v:1 365k ' +
+        '-c:v:0 libx264 -b:v:0 3000k ' +
+        '-c:v:1 libx264 -b:v:1 1000k ' +
         '-c:a copy ' +
         '-var_stream_map "v:0,a:0 v:1,a:1" ' +
         '-master_pl_name master.m3u8 ' +
@@ -33,8 +33,12 @@ class EncodingProvider {
   }
 
   static double getAspectRatio(Map<dynamic, dynamic> info) {
-    final int width = info['streams'][0]['width'];
-    final int height = info['streams'][0]['height'];
+    // final int width = info['streams'][0]['width'];
+     final int width = 1280;
+    // final int height = info['streams'][0]['height'];
+    final int height = 720;
+
+
     final double aspect = height / width;
     return aspect;
   }
