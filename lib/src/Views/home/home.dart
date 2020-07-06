@@ -71,10 +71,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             title: Text('Business'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            title: Text('School'),
-          ),
-          BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             title: Text('settings'),
           ),
