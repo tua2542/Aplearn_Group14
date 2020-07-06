@@ -29,7 +29,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   static List<Widget> _widgetOptions = <Widget>[
     HomePageAdmin(),
     BusinessPageAdmin(),
-    SchoolPageAdmin(),
     ContactPageAdmin(),
   ];
 
@@ -71,10 +70,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           BottomNavigationBarItem(
             icon: Icon(Icons.business),
             title: Text('Business'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            title: Text('School'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
