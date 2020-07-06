@@ -1,6 +1,5 @@
 import 'package:aplearn_group14/src/Views/aunthenicate/sign_in.dart';
 import 'package:flutter/material.dart';
-import 'package:stripe_payment/stripe_payment.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Authenticate extends StatefulWidget {

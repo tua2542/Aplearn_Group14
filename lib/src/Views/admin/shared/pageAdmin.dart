@@ -1,8 +1,6 @@
-import 'package:aplearn_group14/src/Presenters/paymentservice.dart';
 import 'package:aplearn_group14/src/Views/admin/learn/studyAdmin.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:stripe_payment/stripe_payment.dart';
 
 
 
@@ -39,35 +37,7 @@ class BusinessPageAdmin extends StatefulWidget {
 }
 
 class _BusinessPageAdminState extends State<BusinessPageAdmin> {
-  // String _error;
-  // PaymentMethod _paymentMethod;
-  // Token _paymentToken;
   
-
-  final CreditCard testCard = CreditCard(
-    number: '4000002760003184',
-    expMonth: 12,
-    expYear: 21,
-  );
-
-  // GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
-
-  @override
-  initState() {
-    super.initState();
-
-    StripePayment.setOptions(
-        StripeOptions(publishableKey: "pk_test_51GzJm8LlTCGQsQVIfc7l1x4Cf4QM4GX4jxKSxX3WdAZsiLJH5nRiskSMfombF1xgKquF8gPz5peMfpoBNaJ9psEP00i1rSNZtH", 
-        merchantId: "Test", androidPayMode: 'test'));
-  }
-
-  // void setError(dynamic error) {
-  //   _scaffoldKey.currentState.showSnackBar(SnackBar(content: Text(error.toString())));
-  //   setState(() {
-  //     error = error.toString();
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,9 +54,7 @@ class _BusinessPageAdminState extends State<BusinessPageAdmin> {
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () async {
-                StripePayment.paymentRequestWithCardForm(CardFormPaymentRequest()).then((token) {
-                  PaymentService().addCard(token);
-                });
+
                 }),
           ],
         ),

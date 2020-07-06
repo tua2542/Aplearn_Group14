@@ -1,8 +1,6 @@
-import 'package:aplearn_group14/src/Presenters/paymentservice.dart';
 import 'package:aplearn_group14/src/Views/learn/study.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:stripe_payment/stripe_payment.dart';
 
 
 
