@@ -1,6 +1,6 @@
 import 'package:aplearn_group14/src/Presenters/auth.dart';
 import 'package:aplearn_group14/src/Views/admin/shared/pageAdmin.dart';
-import 'package:aplearn_group14/src/Views/aunthenicate/aunthenicate.dart';
+import 'package:aplearn_group14/src/Views/aunthenicate/sign_in.dart';
 import 'package:flutter/material.dart';
 
 
@@ -52,7 +52,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               if (_auth.signOut() != null) {
                 Navigator.pushAndRemoveUntil(
                     context,
-                    MaterialPageRoute(builder: (context) => BeforeAuth()),
+                    MaterialPageRoute(builder: (context) => SignIn()),
                     (route) => false);
               }
             },

@@ -1,11 +1,13 @@
-import 'package:aplearn_group14/src/Presenters/paymentservice.dart';
 import 'package:aplearn_group14/src/Views/learn/study.dart';
+import 'package:aplearn_group14/src/Views/payment/paymentscreen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:stripe_payment/stripe_payment.dart';
 
 
 
+// ignore: must_be_immutable
 class HomePageTwo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -39,35 +41,10 @@ class BusinessPageTwo extends StatefulWidget {
 }
 
 class _BusinessPageTwoState extends State<BusinessPageTwo> {
-  // String _error;
-  // PaymentMethod _paymentMethod;
-  // Token _paymentToken;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  FirebaseUser user;
+  final Firestore _db = Firestore.instance;
   
-
-  final CreditCard testCard = CreditCard(
-    number: '4000002760003184',
-    expMonth: 12,
-    expYear: 21,
-  );
-
-  // GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
-
-  @override
-  initState() {
-    super.initState();
-
-    StripePayment.setOptions(
-        StripeOptions(publishableKey: "pk_test_51GzJm8LlTCGQsQVIfc7l1x4Cf4QM4GX4jxKSxX3WdAZsiLJH5nRiskSMfombF1xgKquF8gPz5peMfpoBNaJ9psEP00i1rSNZtH", 
-        merchantId: "Test", androidPayMode: 'test'));
-  }
-
-  // void setError(dynamic error) {
-  //   _scaffoldKey.currentState.showSnackBar(SnackBar(content: Text(error.toString())));
-  //   setState(() {
-  //     error = error.toString();
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,13 +57,11 @@ class _BusinessPageTwoState extends State<BusinessPageTwo> {
                 RaisedButton(
                 color: Colors.pink[400],
                 child: Text(
-                  'Donate 1 Dollar',
+                  'Donate',
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () async {
-                StripePayment.paymentRequestWithCardForm(CardFormPaymentRequest()).then((token) {
-                  PaymentService().addCard(token);
-                });
+                Navigator.push(context, MaterialPageRoute(builder: (context) => PaymentScreen(_auth,user,_db)));
                 }),
           ],
         ),
