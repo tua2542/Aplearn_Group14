@@ -1,17 +1,18 @@
 import 'package:aplearn_group14/src/Presenters/auth.dart';
-import 'package:aplearn_group14/src/Views/aunthenicate/register.dart';
-import 'package:aplearn_group14/src/Views/aunthenicate/sign_in_admin.dart';
+import 'package:aplearn_group14/src/Views/admin/admin.dart';
 import 'package:aplearn_group14/src/shared/constants.dart';
 import 'package:aplearn_group14/src/shared/loading.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 
-class SignIn extends StatefulWidget {
+class SignInForAdmin extends StatefulWidget {
   @override
-  _SignInState createState() => _SignInState();
+  _SignInForAdminState createState() => _SignInForAdminState();
 }
 
-class _SignInState extends State<SignIn> {
+class _SignInForAdminState extends State<SignInForAdmin> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
   String error = '';
@@ -30,16 +31,7 @@ class _SignInState extends State<SignIn> {
             appBar: AppBar(
               backgroundColor: Colors.brown[400],
               elevation: 0.0,
-              title: Text('Sign in to Aplearn'),
-              actions: <Widget>[
-                FlatButton.icon(
-                    icon: Icon(Icons.person),
-                    label: Text('Register'),
-                    onPressed: () async {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Register()));
-                    }),
-              ],
+              title: Text('Sign in to Aplearn for admin'),
             ),
             body: Container(
               padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
@@ -85,6 +77,26 @@ class _SignInState extends State<SignIn> {
                                 loading = false;
                                 error =
                                     'Could not sign in with those credentials';
+                              });
+                            } else {
+                              FirebaseAuth.instance.currentUser().then((user) {
+                                Firestore.instance
+                                    .collection('users')
+                                    .where('uid', isEqualTo: user.uid)
+                                    .getDocuments()
+                                    .then((docs) {
+                                  if (docs.documents[0].exists) {
+                                    if (docs.documents[0].data['role'] ==
+                                        'admin') {
+                                      Navigator.pushAndRemoveUntil(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  AdminPage()),
+                                          (route) => false);
+                                    }
+                                  }
+                                });
                               });
                             }
                           }
@@ -156,17 +168,6 @@ class _SignInState extends State<SignIn> {
                               );
                             }),
                           );
-                        }),
-                    FlatButton(
-                        child: Text(
-                          'For admin login here',
-                          style: TextStyle(color: Colors.black),
-                        ),
-                        onPressed: () async {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => SignInForAdmin()));
                         }),
                     SizedBox(height: 12.0),
                     Text(

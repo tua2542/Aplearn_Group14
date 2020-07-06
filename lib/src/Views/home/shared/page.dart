@@ -1,9 +1,13 @@
 import 'package:aplearn_group14/src/Views/learn/study.dart';
+import 'package:aplearn_group14/src/Views/payment/paymentscreen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 
 
+// ignore: must_be_immutable
 class HomePageTwo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -37,6 +41,9 @@ class BusinessPageTwo extends StatefulWidget {
 }
 
 class _BusinessPageTwoState extends State<BusinessPageTwo> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  FirebaseUser user;
+  final Firestore _db = Firestore.instance;
   
   @override
   Widget build(BuildContext context) {
@@ -50,11 +57,11 @@ class _BusinessPageTwoState extends State<BusinessPageTwo> {
                 RaisedButton(
                 color: Colors.pink[400],
                 child: Text(
-                  'Donate 1 Dollar',
+                  'Donate',
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () async {
-
+                Navigator.push(context, MaterialPageRoute(builder: (context) => PaymentScreen(_auth,user,_db)));
                 }),
           ],
         ),
