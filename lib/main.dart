@@ -21,12 +21,12 @@ class _MyAppState extends State<MyApp> {
     return SplashScreen(
       seconds: 5,
       navigateAfterSeconds: AfterSplash(),
-      title: Text('Welcome In Aplearn'),
-      image: Image.asset('assets/images/logo/flutter_logo.png'),
+      title: Text('Welcome To Aplearn'),
+      image: Image.asset('assets/images/icon/acaIcon.png'),
       backgroundColor: Colors.white,
       styleTextUnderTheLoader: TextStyle(),
       photoSize: 50.0,
-      loaderColor: Colors.red,
+      loaderColor: Colors.blue,
     );
   }
 }

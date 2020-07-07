@@ -37,7 +37,7 @@ dependencies:
   timeago: ^2.0.21
   image_picker: ^0.6.1+11
   chewie: ^0.9.10
-  path: ^1.7.0
+  path: ^1.6.4
   path_provider: ^1.1.0
   flutter_dotenv: ^2.0.3
   flutter_ffmpeg: ^0.2.10
@@ -68,7 +68,39 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/logo/flutter_logo.png
+    - assets/images/background/bg1.jpg
+    - assets/images/background/bg2.jpg
+    - assets/images/icon/acaIcon.png
+    - assets/images/icon/alterIcon.png
+    - assets/images/icon/bioIcon.png
+    - assets/images/icon/chemIcon.png
+    - assets/images/icon/drawIcon.png
+    - assets/images/icon/guitarIcon.png
+    - assets/images/icon/math-highIcon.png
+    - assets/images/icon/math-midIcon.png
+    - assets/images/icon/phyIcon.png
+    - assets/images/icon/sciIcon.png
+    - assets/images/news/donationPage.png
+    - assets/images/news/newsHire.png
+    - assets/images/news/newsSubject.png
+    - assets/images/news/newsVote.png
+    - assets/images/news/profilePage.png
+    - assets/images/news/votePage.png
+    - assets/images/picture/academicLearning.png
+    - assets/images/picture/alternativeLearning.jpg
+    - assets/images/picture/donate.jpg
+    - assets/images/picture/vote.png
+    - assets/images/title/acaTitle.png
+    - assets/images/title/alterTitle.png
+    - assets/images/title/bioTitle.png
+    - assets/images/title/chemTitle.png
+    - assets/images/title/drawTitle.png
+    - assets/images/title/guitarTitle.png
+    - assets/images/title/math-highTitle.png
+    - assets/images/title/math-midTitle.png
+    - assets/images/title/phyTitle.png
+    - assets/images/title/sciTitle.png
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
