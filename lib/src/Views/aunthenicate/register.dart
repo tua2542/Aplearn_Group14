@@ -137,13 +137,13 @@ class _RegisterState extends State<Register> {
                             if (_formKey.currentState.validate()) {
                               setState(() => loading = true);
                               dynamic result =
-                              await _auth.registerWithEmailAndPassword(
-                                  email,
-                                  password,
-                                  firstname,
-                                  lastname,
-                                  occupation,
-                                  role);
+                                  await _auth.registerWithEmailAndPassword(
+                                      email,
+                                      password,
+                                      firstname,
+                                      lastname,
+                                      occupation,
+                                      role);
                               if (result == null) {
                                 setState(() {
                                   loading = false;
@@ -154,7 +154,7 @@ class _RegisterState extends State<Register> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => Wrapper()),
-                                        (route) => false);
+                                    (route) => false);
                               }
                             }
                           },
@@ -162,24 +162,19 @@ class _RegisterState extends State<Register> {
                           child: Ink(
                             decoration: BoxDecoration(
                               gradient: LinearGradient(
-                                colors: [
-                                  Color(0xff374ABE),
-                                  Color(0xff64B6FF)
-                                ],
+                                colors: [Color(0xff374ABE), Color(0xff64B6FF)],
                                 begin: Alignment.centerLeft,
                                 end: Alignment.centerRight,
                               ),
                             ),
                             child: Container(
                               constraints: BoxConstraints(
-                                  maxWidth: 300.0,
-                                  minHeight: 50.0),
+                                  maxWidth: 300.0, minHeight: 50.0),
                               alignment: Alignment.center,
                               child: Text(
                                 "Register",
                                 textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: Colors.white),
+                                style: TextStyle(color: Colors.white),
                               ),
                             ),
                           ),

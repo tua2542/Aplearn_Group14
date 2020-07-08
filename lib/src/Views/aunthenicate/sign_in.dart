@@ -125,7 +125,8 @@ class _SignInState extends State<SignIn> {
                                         children: <Widget>[
                                           SizedBox(height: 5.0),
                                           IconButton(
-                                            padding: EdgeInsets.only(right: 500),
+                                            padding:
+                                                EdgeInsets.only(right: 500),
                                             icon: Icon(Icons.arrow_back_ios),
                                             color: Colors.black87,
                                             iconSize: 25.0,
