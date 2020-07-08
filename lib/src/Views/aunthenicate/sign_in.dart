@@ -89,37 +89,70 @@ class _SignInState extends State<SignIn> {
                       ),
                       SizedBox(height: 5.0),
                       FlatButton(
-                        child: Row(
+                          child: Row(
                             mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            Text(
-                              "Forget Password?",
-                              textAlign: TextAlign.right,
-                            ),
-                          ],
-                        ),
+                            children: <Widget>[
+                              Text(
+                                "Forget Password?",
+                                textAlign: TextAlign.right,
+                              ),
+                            ],
+                          ),
                           onPressed: () async {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (BuildContext context) {
                                 return Scaffold(
-                                  backgroundColor: Colors.brown[100],
-                                  appBar: AppBar(
-                                    title: Text('Reset Password'),
-                                    backgroundColor: Colors.brown[400],
-                                    elevation: 0.0,
-                                  ),
+//                                  backgroundColor: Colors.brown[100],
+//                                  appBar: AppBar(
+//                                    title: Text('Reset Password'),
+//                                    backgroundColor: Colors.brown[400],
+//                                    elevation: 0.0,
+//                                  ),
                                   body: Container(
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        image: AssetImage(
+                                            "assets/images/background/bg1.jpg"),
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
                                     padding: EdgeInsets.symmetric(
                                         vertical: 20.0, horizontal: 50.0),
                                     child: Form(
                                       child: Column(
                                         children: <Widget>[
+                                          SizedBox(height: 5.0),
+                                          IconButton(
+                                            padding: EdgeInsets.only(right: 500),
+                                            icon: Icon(Icons.arrow_back_ios),
+                                            color: Colors.black87,
+                                            iconSize: 25.0,
+                                            onPressed: () async {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          SignIn()));
+                                            },
+                                          ),
+                                          Image.asset(
+                                              "assets/images/icon/acaIcon.png",
+                                              width: 175,
+                                              height: 175),
+                                          Text(
+                                            'Forget Password',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                color: Colors.black87,
+                                                fontSize: 22),
+                                          ),
                                           SizedBox(height: 20.0),
                                           TextFormField(
-                                              decoration: textInputDecoration
-                                                  .copyWith(hintText: 'Email'),
+                                              decoration: const InputDecoration(
+                                                labelText: 'Enter Your Email',
+                                              ),
                                               validator: (val) => val.isEmpty
                                                   ? 'Enter an email'
                                                   : null,
@@ -127,13 +160,10 @@ class _SignInState extends State<SignIn> {
                                                 setState(() => email = val);
                                               }),
                                           SizedBox(height: 20.0),
-                                          FlatButton(
-                                              color: Colors.pink[400],
-                                              child: Text(
-                                                'reset',
-                                                style: TextStyle(
-                                                    color: Colors.white),
-                                              ),
+                                          Container(
+                                            height: 40,
+                                            width: 275,
+                                            child: RaisedButton(
                                               onPressed: () async {
                                                 _auth.sendPasswordResetEmail(
                                                     email);
@@ -154,7 +184,34 @@ class _SignInState extends State<SignIn> {
                                                         Duration(seconds: 3),
                                                   ).show(context);
                                                 }
-                                              }),
+                                              },
+                                              padding: EdgeInsets.all(0.0),
+                                              child: Ink(
+                                                decoration: BoxDecoration(
+                                                  gradient: LinearGradient(
+                                                    colors: [
+                                                      Color(0xff374ABE),
+                                                      Color(0xff64B6FF)
+                                                    ],
+                                                    begin: Alignment.centerLeft,
+                                                    end: Alignment.centerRight,
+                                                  ),
+                                                ),
+                                                child: Container(
+                                                  constraints: BoxConstraints(
+                                                      maxWidth: 300.0,
+                                                      minHeight: 50.0),
+                                                  alignment: Alignment.center,
+                                                  child: Text(
+                                                    "Submit",
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                        color: Colors.white),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
                                         ],
                                       ),
                                     ),
@@ -236,7 +293,6 @@ class _SignInState extends State<SignIn> {
                           ),
                         ),
                       ),
-
                       FlatButton(
                           child: Text(
                             'For admin login here',
