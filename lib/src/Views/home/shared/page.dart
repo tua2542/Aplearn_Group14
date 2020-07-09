@@ -1,5 +1,6 @@
 import 'package:aplearn_group14/src/Views/learn/study.dart';
 import 'package:aplearn_group14/src/Views/payment/paymentscreen.dart';
+import 'package:aplearn_group14/src/Views/profile/profile.dart';
 import 'package:aplearn_group14/src/Views/state/vote_state.dart';
 import 'package:aplearn_group14/src/Views/vote/vote.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -127,6 +128,16 @@ class ContactPageTwo extends StatelessWidget {
                 ),
                 onPressed: () async {
                   launch(_emailLaunchUri.toString());
+                }),
+                            RaisedButton(
+                color: Colors.pink[400],
+                child: Text(
+                  'Profile',
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () async {
+                   Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Profile()));
                 }),
           ],
         ),

@@ -23,6 +23,7 @@ class _RegisterState extends State<Register> {
   String lastname = '';
   String occupation = '';
   String role = 'student';
+  String avatar = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png';
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +101,7 @@ class _RegisterState extends State<Register> {
                           if (_formKey.currentState.validate()) {
                             setState(() => loading = true);
                             dynamic result = await _auth
-                                .registerWithEmailAndPassword(email,password,firstname,lastname,occupation,role);
+                                .registerWithEmailAndPassword(email,password,firstname,lastname,occupation,role,avatar);
                             if (result == null) {
                               setState(() {
                                 loading = false;
