@@ -71,6 +71,7 @@ flutter:
     - assets/images/background/bg1.jpg
     - assets/images/background/bg2.jpg
     - assets/images/icon/acaIcon.png
+    - assets/images/icon/admin.png
     - assets/images/icon/alterIcon.png
     - assets/images/icon/bioIcon.png
     - assets/images/icon/chemIcon.png
