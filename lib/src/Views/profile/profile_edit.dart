@@ -2,11 +2,11 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
 import 'package:uuid/uuid.dart';
-
 
 class ProfileEdit extends StatefulWidget {
   @override
@@ -47,7 +47,8 @@ class _ProfileEditState extends State<ProfileEdit> {
       StorageReference firebaseStorageRef =
           FirebaseStorage.instance.ref().child(fileName);
       StorageUploadTask uploadTask = firebaseStorageRef
-      .child("${user.uid}_profilePic_$picId.jpg").putFile(_image);
+          .child("${user.uid}_profilePic_$picId.jpg")
+          .putFile(_image);
       StorageTaskSnapshot taskSnapshot = await uploadTask.onComplete;
       String downloadUrl = await taskSnapshot.ref.getDownloadURL();
       return downloadUrl;
@@ -153,6 +154,17 @@ class _ProfileEditState extends State<ProfileEdit> {
                         color: Color(0xff476cfb),
                         onPressed: () {
                           handleUpdateUserProfile();
+                          Flushbar(
+                             message:
+                                'Profile Picture Uploaded',
+                            icon: Icon(
+                              Icons.info_outline,
+                              size: 28,
+                              color: Colors.blue.shade300,
+                            ),
+                            leftBarIndicatorColor: Colors.blue.shade300,
+                            duration: Duration(seconds: 3),
+                          ).show(context);
                         },
                         elevation: 4.0,
                         splashColor: Colors.blueGrey,
