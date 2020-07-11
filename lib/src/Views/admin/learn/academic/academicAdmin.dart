@@ -1,4 +1,4 @@
-import 'package:aplearn_group14/src/Views/admin/learn/academic/subject/thaiAdmin.dart';
+import 'package:aplearn_group14/src/Views/admin/learn/academic/subject/thai/thaiAdmin.dart';
 import 'package:flutter/material.dart';
 
 

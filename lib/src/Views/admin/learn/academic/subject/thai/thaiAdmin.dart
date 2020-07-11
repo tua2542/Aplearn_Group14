@@ -4,6 +4,7 @@ import 'package:aplearn_group14/src/Models/video_info.dart';
 import 'package:aplearn_group14/src/Presenters/encoding_provider.dart';
 import 'package:aplearn_group14/src/Presenters/video_provider.dart';
 import 'package:aplearn_group14/src/Views/video_player/player.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ import 'package:path/path.dart' as p;
 import 'package:timeago/timeago.dart' as timeago;
 
 
-class Thai extends StatelessWidget {
+class ThaiForAdmin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -245,66 +246,73 @@ class _MyHomePageState extends State<MyHomePage> {
         itemCount: _videos.length,
         itemBuilder: (BuildContext context, int index) {
           final video = _videos[index];
-          return GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return ChewiePlayer(
-                      video: video,
-                    );
-                  },
-                ),
-              );
-            },
-            child: Card(
-              child: new Container(
-                padding: new EdgeInsets.all(10.0),
-                child: Stack(
-                  children: <Widget>[
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+          return StreamBuilder<DocumentSnapshot>(
+            stream: Firestore.instance.collection('courses')
+    .document('thai').collection('unit')
+    .document('unit1').collection('videos').document().snapshots(),
+            builder: (context, snapshot) {
+              return GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return ChewiePlayer(
+                          video: video,
+                        );
+                      },
+                    ),
+                  );
+                },
+                child: Card(
+                  child: new Container(
+                    padding: new EdgeInsets.all(10.0),
+                    child: Stack(
                       children: <Widget>[
-                        Stack(
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Container(
-                              width: thumbWidth.toDouble(),
-                              height: thumbHeight.toDouble(),
-                              child: Center(child: CircularProgressIndicator()),
+                            Stack(
+                              children: <Widget>[
+                                Container(
+                                  width: thumbWidth.toDouble(),
+                                  height: thumbHeight.toDouble(),
+                                  child: Center(child: CircularProgressIndicator()),
+                                ),
+                                ClipRRect(
+                                  borderRadius: new BorderRadius.circular(8.0),
+                                  child: FadeInImage.memoryNetwork(
+                                    placeholder: kTransparentImage,
+                                    image: video.thumbUrl,
+                                  ),
+                                ),
+                              ],
                             ),
-                            ClipRRect(
-                              borderRadius: new BorderRadius.circular(8.0),
-                              child: FadeInImage.memoryNetwork(
-                                placeholder: kTransparentImage,
-                                image: video.thumbUrl,
+                            Expanded(
+                              child: Container(
+                                margin: new EdgeInsets.only(left: 20.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: <Widget>[
+                                    Text("${video.videoName}"),
+                                    Container(
+                                      margin: new EdgeInsets.only(top: 12.0),
+                                      child: Text(
+                                          'Uploaded ${timeago.format(new DateTime.fromMillisecondsSinceEpoch(video.uploadedAt))}'),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ],
                         ),
-                        Expanded(
-                          child: Container(
-                            margin: new EdgeInsets.only(left: 20.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.max,
-                              children: <Widget>[
-                                Text("${video.videoName}"),
-                                Container(
-                                  margin: new EdgeInsets.only(top: 12.0),
-                                  child: Text(
-                                      'Uploaded ${timeago.format(new DateTime.fromMillisecondsSinceEpoch(video.uploadedAt))}'),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
                       ],
                     ),
-                  ],
+                  ),
                 ),
-              ),
-            ),
+              );
+            }
           );
         });
   }
@@ -335,13 +343,13 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(child: _processing ? _getProgressBar() : _getListView()),
-      // floatingActionButton: FloatingActionButton(
-      //     child: _processing
-      //         ? CircularProgressIndicator(
-      //             valueColor: new AlwaysStoppedAnimation<Color>(Colors.white),
-      //           )
-      //         : Icon(Icons.add),
-      //     onPressed: _takeVideo),
+      floatingActionButton: FloatingActionButton(
+          child: _processing
+              ? CircularProgressIndicator(
+                  valueColor: new AlwaysStoppedAnimation<Color>(Colors.white),
+                )
+              : Icon(Icons.add),
+          onPressed: _takeVideo),
     );
   }
 }

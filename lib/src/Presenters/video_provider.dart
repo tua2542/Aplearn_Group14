@@ -2,8 +2,21 @@ import 'package:aplearn_group14/src/Models/video_info.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FirebaseProvider {
-  static saveVideo(VideoInfo video) async {
-    await Firestore.instance.collection('videos').document().setData({
+  // static saveVideo(VideoInfo video) async {
+  //   await Firestore.instance.collection('videos').document().setData({
+  //       'videoUrl': video.videoUrl,
+  //       'thumbUrl': video.thumbUrl,
+  //       'coverUrl': video.coverUrl,
+  //       'aspectRatio': video.aspectRatio,
+  //       'uploadedAt': video.uploadedAt,
+  //       'videoName': video.videoName,
+  //     });
+  // }
+
+    static saveVideo(VideoInfo video) async {
+    await Firestore.instance.collection('courses')
+    .document('thai').collection('unit')
+    .document('unit1').collection('videos').document().setData({
         'videoUrl': video.videoUrl,
         'thumbUrl': video.thumbUrl,
         'coverUrl': video.coverUrl,
@@ -14,7 +27,9 @@ class FirebaseProvider {
   }
 
   static listenToVideos(callback) async {
-    Firestore.instance.collection('videos').snapshots().listen((qs) {
+   Firestore.instance.collection('courses')
+    .document('thai').collection('unit')
+    .document('unit1').collection('videos').snapshots().listen((qs) {
       final videos = mapQueryToVideoInfo(qs);
       callback(videos);
     });
