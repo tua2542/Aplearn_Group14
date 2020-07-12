@@ -1,4 +1,4 @@
-import 'package:aplearn_group14/src/Models/upload.dart';
+import 'package:aplearn_group14/src/Models/record.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
