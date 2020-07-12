@@ -1,24 +1,17 @@
 import 'package:aplearn_group14/src/Views/learn/study.dart';
 import 'package:aplearn_group14/src/Views/payment/paymentscreen.dart';
 import 'package:aplearn_group14/src/Views/profile/profile.dart';
-import 'package:aplearn_group14/src/Views/state/vote_state.dart';
 import 'package:aplearn_group14/src/Views/vote/vote.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 // ignore: must_be_immutable
 class HomePageTwo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => VoteState()),
-      ],
-      child: Consumer<VoteState>(builder: (builder, voteState, child) {
-        return Scaffold(
+    return  Scaffold(
           body: Container(
             padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
             child: Column(
@@ -45,20 +38,13 @@ class HomePageTwo extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => Scaffold(
-                                    appBar: AppBar(
-                                      title: Text("Vote"),
-                                      actions: <Widget>[],
-                                    ),
-                                    body: VoteScreen(),
-                                  )));
+                              builder: (context) => VoteApp()));
                     }),
               ],
             ),
           ),
         );
-      }),
-    );
+
   }
 }
 
