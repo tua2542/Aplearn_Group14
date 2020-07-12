@@ -1,4 +1,5 @@
-import 'package:aplearn_group14/src/Views/learn/academic/subject/thai.dart';
+import 'package:aplearn_group14/src/Views/learn/academic/subject/thai/thai.dart';
+import 'package:aplearn_group14/src/Views/learn/academic/subject/thai/thai_screen.dart';
 import 'package:flutter/material.dart';
 
 
@@ -28,6 +29,16 @@ class _AcademicState extends State<Academic> {
                 ),
                 onPressed: () async {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => Thai()));
+
+                }),
+                             RaisedButton(
+                color: Colors.pink[400],
+                child: Text(
+                  'Thai Screen',
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () async {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ThaiScreen()));
 
                 }),
                 RaisedButton(
