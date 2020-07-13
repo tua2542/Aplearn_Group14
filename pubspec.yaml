@@ -92,6 +92,9 @@ flutter:
     - assets/images/news/newsVote.png
     - assets/images/news/profilePage.png
     - assets/images/news/votePage.png
+    - assets/images/news/homeNewsHire.png
+    - assets/images/news/homeNewsSubject.png
+    - assets/images/news/homeNewsVote.jpg
     - assets/images/picture/academicLearning.png
     - assets/images/picture/alternativeLearning.jpg
     - assets/images/picture/donate.jpg

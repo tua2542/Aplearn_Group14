@@ -1,6 +1,7 @@
 import 'package:aplearn_group14/src/Views/learn/academic/academic.dart';
 import 'package:aplearn_group14/src/Views/learn/alternative/alternative.dart';
 import 'package:aplearn_group14/src/Views/learn/study.dart';
+import 'package:aplearn_group14/src/Views/news/newsVote.dart';
 import 'package:aplearn_group14/src/Views/payment/paymentscreen.dart';
 import 'package:aplearn_group14/src/Views/profile/profile.dart';
 import 'package:aplearn_group14/src/Views/vote/vote.dart';
@@ -10,103 +11,123 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:responsive_container/responsive_container.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:aplearn_group14/src/Views/news/newsHire.dart';
+import 'package:aplearn_group14/src/Views/news/newsSubject.dart';
 
-//int _currentIndex = 0;
-//List cardList = [Item1(), Item2(), Item3()];
-//
-//List<T> map<T>(List list, Function handler) {
-//  List<T> result = [];
-//  for (var i = 0; i < list.length; i++) {
-//    result.add(handler(i, list[i]));
-//  }
-//  return result;
-//}
-//
-//class Item1 extends StatelessWidget {
-//  const Item1({Key key}) : super(key: key);
-//
-//  @override
-//  Widget build(BuildContext context) {
-//    return Container(
-//      decoration: BoxDecoration(
-//        color: Color(0xFFFFFFFF),
-//      ),
-//      child: Column(
-//        mainAxisAlignment: MainAxisAlignment.center,
-//        children: <Widget>[
-//          FittedBox(
-//            child: InkWell(
-//              onTap: () {},
-//              child: Container(
-//                width: MediaQuery.of(context).size.height,
-//                margin: EdgeInsets.symmetric(horizontal: 35.0),
-//                child: Image.asset('assets/images/news/homeNewsHire.png',
-//                    fit: BoxFit.cover),
-//              ),
-//            ),
-//          ),
-//        ],
-//      ),
-//    );
-//  }
-//}
-//
-//class Item2 extends StatelessWidget {
-//  const Item2({Key key}) : super(key: key);
-//
-//  @override
-//  Widget build(BuildContext context) {
-//    return Container(
-//      decoration: BoxDecoration(
-//        color: Color(0xFFFDF2F0),
-//      ),
-//      child: Column(
-//        mainAxisAlignment: MainAxisAlignment.center,
-//        children: <Widget>[
-//          FittedBox(
-//              child: InkWell(
-//            onTap: () {},
-//            child: Container(
-//              width: MediaQuery.of(context).size.width,
-//              margin: EdgeInsets.symmetric(horizontal: 35.0),
-//              child: Image.asset('assets/images/news/homeNewsSubject.png',
-//                  fit: BoxFit.cover),
-//            ),
-//          )),
-//        ],
-//      ),
-//    );
-//  }
-//}
-//
-//class Item3 extends StatelessWidget {
-//  const Item3({Key key}) : super(key: key);
-//
-//  @override
-//  Widget build(BuildContext context) {
-//    return Container(
-//      decoration: BoxDecoration(
-//        color: Color(0xFFFFFFFF),
-//      ),
-//      child: Column(
-//        mainAxisAlignment: MainAxisAlignment.center,
-//        children: <Widget>[
-//          FittedBox(
-//            child: InkWell(
-//              onTap: () {},
-//              child: Container(
-//                width: MediaQuery.of(context).size.width,
-//                margin: EdgeInsets.symmetric(horizontal: 35.0),
-//                child: Image.asset('assets/images/news/homeNewsVote.jpg',
-//                    fit: BoxFit.cover),
-//              ),
-//            ),
-//          ),
-//        ],
-//      ),
-//    );
-//  }
-//}
+int _currentIndex = 0;
+List cardList = [Item1(), Item2(), Item3()];
+
+List<T> map<T>(List list, Function handler) {
+  List<T> result = [];
+  for (var i = 0; i < list.length; i++) {
+    result.add(handler(i, list[i]));
+  }
+  return result;
+}
+
+class Item1 extends StatelessWidget {
+  const Item1({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Color(0xFFFFFFFF),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          FittedBox(
+            child: RaisedButton(
+              color: Colors.white,
+              onPressed: () async {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => newsHire()));
+              },
+              child: Container(
+                width: MediaQuery.of(context).size.height,
+                margin: EdgeInsets.symmetric(horizontal: 35.0),
+                child: Image.asset('assets/images/news/homeNewsHire.png',
+                    fit: BoxFit.cover),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class Item2 extends StatelessWidget {
+  const Item2({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Color(0xFFFDF2F0),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          FittedBox(
+              child: RaisedButton(
+            color: Color(0xFFFDF2F0),
+                onPressed: () async {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => newsSubject()));
+                },
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              margin: EdgeInsets.symmetric(horizontal: 35.0),
+              child: Image.asset('assets/images/news/homeNewsSubject.png',
+                  fit: BoxFit.cover),
+            ),
+          )),
+        ],
+      ),
+    );
+  }
+}
+
+class Item3 extends StatelessWidget {
+  const Item3({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Color(0xFFFFFFFF),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          FittedBox(
+            child: RaisedButton(
+              color: Colors.white,
+              onPressed: () async {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => newsVote()));
+              },
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                margin: EdgeInsets.symmetric(horizontal: 35.0),
+                child: Image.asset('assets/images/news/homeNewsVote.jpg',
+                    fit: BoxFit.cover),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
 
 class DrawCircle extends CustomPainter {
   Paint _paint;
@@ -160,49 +181,54 @@ class HomePageTwo extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 5),
-//                CarouselSlider(
-//                  height: 250.0,
-//                  autoPlay: true,
-//                  autoPlayInterval: Duration(seconds: 3),
-//                  autoPlayAnimationDuration: Duration(milliseconds: 800),
-//                  autoPlayCurve: Curves.fastOutSlowIn,
-//                  pauseAutoPlayOnTouch: Duration(seconds: 10),
-//                  aspectRatio: 2.0,
-//                  onPageChanged: (index) {
-//                    setState(() {
-//                      _currentIndex = index;
-//                    });
-//                  },
-//                  items: cardList.map((card) {
-//                    return Builder(builder: (BuildContext context) {
-//                      return Container(
-//                        height: MediaQuery.of(context).size.height * 0.30,
-//                        width: MediaQuery.of(context).size.width,
-//                        child: Card(
-//                          color: Color(0xff435BFF),
-//                          child: card,
-//                        ),
-//                      );
-//                    });
-//                  }).toList(),
-//                ),
-//                Row(
-//                  mainAxisAlignment: MainAxisAlignment.center,
-//                  children: map<Widget>(cardList, (index, url) {
-//                    return Container(
-//                      width: 10.0,
-//                      height: 10.0,
-//                      margin:
-//                          EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
-//                      decoration: BoxDecoration(
-//                        shape: BoxShape.circle,
-//                        color: _currentIndex == index
-//                            ? Colors.black54
-//                            : Colors.grey[500],
-//                      ),
-//                    );
-//                  }),
-//                ),
+                CarouselSlider(
+                  height: 250.0,
+                  initialPage: 0,
+                  enlargeCenterPage: true,
+                  autoPlay: true,
+                  reverse: false,
+                  enableInfiniteScroll: true,
+                  autoPlayInterval: Duration(seconds: 3),
+                  autoPlayAnimationDuration: Duration(milliseconds: 2000),
+                  pauseAutoPlayOnTouch: Duration(seconds: 10),
+                  scrollDirection: Axis.horizontal,
+                  onPageChanged: (index) {
+                    setState(() {
+                      _currentIndex = index;
+                    });
+                  },
+                  items: cardList.map((card) {
+                    return Builder(
+                      builder: (BuildContext context) {
+                        return Container(
+                          width: MediaQuery.of(context).size.width,
+                          margin: EdgeInsets.symmetric(horizontal: 10.0),
+                          child: Card(
+                            color: Color(0xff435BFF),
+                            child: card,
+                          ),
+                        );
+                      },
+                    );
+                  }).toList(),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: map<Widget>(cardList, (index, url) {
+                    return Container(
+                      width: 10.0,
+                      height: 10.0,
+                      margin:
+                          EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: _currentIndex == index
+                            ? Colors.black54
+                            : Colors.grey[500],
+                      ),
+                    );
+                  }),
+                ),
                 SizedBox(height: 15),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -342,16 +368,6 @@ A VOTE''',
                     ),
                   ],
                 ),
-                //Sign In / Register
-//                RaisedButton(
-//                color: Colors.pink[400],
-//                child: Text(
-//                  'Learn',
-//                  style: TextStyle(color: Colors.white),
-//                ),
-//                onPressed: () async {
-//                Navigator.push(context, MaterialPageRoute(builder: (context) => Study()));
-//                }),
               ],
             ),
           ),
@@ -359,9 +375,9 @@ A VOTE''',
       ),
     );
   }
-}
 
-//void setState(Null Function() param0) {}
+  void setState(Null Function() param0) {}
+}
 
 class BusinessPageTwo extends StatefulWidget {
   @override
@@ -401,10 +417,8 @@ class _BusinessPageTwoState extends State<BusinessPageTwo> {
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () async {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => VoteApp()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => VoteApp()));
                 }),
           ],
         ),
@@ -442,15 +456,15 @@ class ContactPageTwo extends StatelessWidget {
                 onPressed: () async {
                   launch(_emailLaunchUri.toString());
                 }),
-                            RaisedButton(
+            RaisedButton(
                 color: Colors.pink[400],
                 child: Text(
                   'Profile',
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () async {
-                   Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Profile()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Profile()));
                 }),
           ],
         ),
