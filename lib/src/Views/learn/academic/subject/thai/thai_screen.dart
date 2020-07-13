@@ -3,6 +3,8 @@ import 'package:aplearn_group14/src/Views/learn/academic/subject/thai/unit_widge
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_container/responsive_container.dart';
+import 'package:aplearn_group14/src/customer_expansion_title.dart'as custom;
+
 
 class ThaiScreen extends StatefulWidget {
   @override
@@ -85,6 +87,7 @@ class _ThaiScreenState extends State<ThaiScreen> {
                                           padding: EdgeInsets.symmetric(
                                               vertical: 0.0, horizontal: 20.0),
                                           child: RichText(
+                                            textAlign: TextAlign.justify,
                                             text: new TextSpan(
                                               children: <TextSpan>[
                                                 TextSpan(
@@ -105,7 +108,9 @@ class _ThaiScreenState extends State<ThaiScreen> {
                                               horizontal: 30.0),
                                           child: Column(
                                             children: <Widget>[
-                                              ExpansionTile(
+                                              custom.ExpansionTile(
+                                                headerBackgroundColor: Colors.white,
+                                                backgroundColor: Color(0xFFF6F8FC),
                                                 title: Text(
                                                   "Unit 1",
                                                   style: TextStyle(
@@ -118,7 +123,9 @@ class _ThaiScreenState extends State<ThaiScreen> {
                                                   UnitOneWidget()
                                                 ],
                                               ),
-                                              ExpansionTile(
+                                              custom.ExpansionTile(
+                                                headerBackgroundColor: Colors.white,
+                                                backgroundColor: Color(0xFFF6F8FC),
                                                 title: Text(
                                                   "Unit 2",
                                                   style: TextStyle(
@@ -136,74 +143,82 @@ class _ThaiScreenState extends State<ThaiScreen> {
                                             ],
                                           ),
                                         ),
-                                        Container(
-                                          padding: EdgeInsets.symmetric(
-                                           horizontal: 20.0),
-                                          child: RichText(
-                                            text: new TextSpan(
-                                              children: <TextSpan>[
-                                                TextSpan(
-                                                  text: 'Instructor' + '\n\n',
-                                                  style: TextStyle(
-                                                    fontSize: 15,
-                                                    color: Color(0xFF707070),
+                                        SizedBox(height: 20),
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: <Widget>[
+                                            Container(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 30.0),
+                                              child: RichText(
+                                                textAlign: TextAlign.justify,
+                                                text: new TextSpan(
+                                                  children: <TextSpan>[
+                                                    TextSpan(
+                                                      text:
+                                                          'Instructor' + '\n\n',
+                                                      style: TextStyle(
+                                                        fontSize: 16,
+                                                        color:
+                                                            Color(0xFF707070),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: <Widget>[
+                                            SizedBox(width: 30),
+                                            ClipOval(
+                                              child: SizedBox(
+                                                width: 65.0,
+                                                height: 65.0,
+                                                child: Image.network(
+                                                  snapshot
+                                                      .data['teacher_avatar'],
+                                                  fit: BoxFit.fill,
+                                                ),
+                                              ),
+                                            ),
+                                            Flexible(
+                                              child: Container(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal: 20.0),
+                                                child: RichText(
+                                                  textAlign: TextAlign.justify,
+                                                  text: new TextSpan(
+                                                    children: <TextSpan>[
+                                                      TextSpan(
+                                                        text: snapshot.data[
+                                                                'firstname'] + '  ' +
+                                                            snapshot.data[
+                                                                'lastname'] + '\n\n',
+                                                        style: TextStyle(
+                                                          fontSize: 18,
+                                                          color:
+                                                              Color(0xFF707070),
+                                                        ),
+                                                      ),
+                                                      TextSpan(
+                                                        text: snapshot.data[
+                                                            'teacherInformation'] +
+                                                            '\n',
+                                                        style: TextStyle(
+                                                          fontSize: 15,
+                                                          color:
+                                                          Color(0xFF707070),
+                                                        ),
+                                                      ),
+                                                    ],
                                                   ),
                                                 ),
-                                              ],
+                                              ),
                                             ),
-                                          ),
-                                        ),
-                                        ClipOval(
-                                          child: SizedBox(
-                                            width: 60.0,
-                                            height: 60.0,
-                                            child: Image.network(
-                                              snapshot.data['teacher_avatar'],
-                                              fit: BoxFit.fill,
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(height: 10),
-                                        Container(
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: 20.0),
-                                          child: RichText(
-                                            text: new TextSpan(
-                                              children: <TextSpan>[
-                                                TextSpan(
-                                                  text: snapshot
-                                                          .data['firstname'] +
-                                                      ' ' +
-                                                      snapshot
-                                                          .data['lastname'] +
-                                                      '\n\n',
-                                                  style: TextStyle(
-                                                    fontSize: 23,
-                                                    color: Color(0xFF707070),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                        Container(
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: 20.0),
-                                          child: RichText(
-                                            text: new TextSpan(
-                                              children: <TextSpan>[
-                                                TextSpan(
-                                                  text: snapshot.data[
-                                                          'teacherInformation'] +
-                                                      '\n\n',
-                                                  style: TextStyle(
-                                                    fontSize: 15,
-                                                    color: Color(0xFF707070),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
+                                          ],
                                         ),
                                       ],
                                     ),
