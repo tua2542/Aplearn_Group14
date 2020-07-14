@@ -2,6 +2,9 @@ import 'package:aplearn_group14/src/Presenters/auth.dart';
 import 'package:aplearn_group14/src/Views/aunthenicate/sign_in.dart';
 import 'package:aplearn_group14/src/Views/home/shared/page.dart';
 import 'package:flutter/material.dart';
+import 'package:aplearn_group14/src/Views/learn/academic/academic.dart';
+import 'package:aplearn_group14/src/Views/learn/alternative/alternative.dart';
+import 'package:aplearn_group14/src/Views/profile/profile.dart';
 
 class Home extends StatelessWidget {
   static const String _title = 'Flutter Code Sample';
@@ -27,8 +30,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   int _selectedIndex = 0;
   static List<Widget> _widgetOptions = <Widget>[
     HomePageTwo(),
-    BusinessPageTwo(),
-    ContactPageTwo(),
+    Academic(),
+    Alternative(),
+    Profile(),
   ];
 
   void _onItemTapped(int index) {
@@ -67,12 +71,16 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             title: Text('Home'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            title: Text('Business'),
+            icon: Icon(Icons.book),
+            title: Text('Academic'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            title: Text('settings'),
+            icon: Icon(Icons.dashboard),
+            title: Text('Alternative'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            title: Text('Profile'),
           ),
         ],
         currentIndex: _selectedIndex,

@@ -1,3 +1,5 @@
+import 'package:aplearn_group14/src/Views/aunthenicate/sign_in.dart';
+import 'package:aplearn_group14/src/Views/home/home.dart';
 import 'package:aplearn_group14/src/Views/profile/profile_edit.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -38,13 +40,24 @@ class _ProfileState extends State<Profile> {
             default:
               return Scaffold(
                 appBar: AppBar(
-                  title: Text("Profile"),
+                  elevation: 0.0,
+                  backgroundColor: Color(0xFF9FB3F2),
+                  leading: IconButton(
+                    icon: Icon(Icons.arrow_back_ios, color: Colors.black87),
+                    onPressed: () async {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Home()));
+                    },
+                  ),
                 ),
                 body: Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      SizedBox(height: 20.0),
+                      Image.asset('assets/images/news/profilePage.png'),
+                      SizedBox(height: 20),
                       Container(
                           child: Column(
                         children: snapshot.data.documents
@@ -94,17 +107,53 @@ class _ProfileState extends State<Profile> {
                         }).toList(),
                       )),
                       SizedBox(height: 20.0),
+//                      RaisedButton(
+//                        color: Color(0xff476cfb),
+//                        onPressed: () {
+//                          Navigator.push(
+//                              context,
+//                              MaterialPageRoute(
+//                                  builder: (context) => ProfileEdit()));
+//                        },
+//                        elevation: 4.0,
+//                        splashColor: Colors.blueGrey,
+//                        child: Text(
+//                          'Edit Profile',
+//                          style: TextStyle(color: Colors.white, fontSize: 16.0),
+//                        ),
+//                      ),
                       RaisedButton(
-                        color: Color(0xff476cfb),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0)
+                        ),
                         onPressed: () {
-                           Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => ProfileEdit()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ProfileEdit()));
                         },
-                        elevation: 4.0,
-                        splashColor: Colors.blueGrey,
-                        child: Text(
+                        color: Colors.white,
+                        textColor: Color(0xFF79AFBB),
+                        child: new Text(
                           'Edit Profile',
-                          style: TextStyle(color: Colors.white, fontSize: 16.0),
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ),
+                      RaisedButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0)
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SignIn()));
+                        },
+                        color: Colors.white,
+                        textColor: Color(0xFFFF5960),
+                        child: new Text(
+                          '   Logout   ',
+                          style: TextStyle(fontSize: 18),
                         ),
                       ),
                     ],
