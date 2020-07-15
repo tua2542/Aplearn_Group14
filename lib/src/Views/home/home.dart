@@ -44,23 +44,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-//      appBar: AppBar(
-//        title: const Text('Aplearn'),
-//        actions: <Widget>[
-//          FlatButton.icon(
-//            icon: Icon(Icons.person),
-//            label: Text('logout'),
-//            onPressed: () async {
-//              if (_auth.signOut() != null) {
-//                Navigator.pushAndRemoveUntil(
-//                    context,
-//                    MaterialPageRoute(builder: (context) => SignIn()),
-//                    (route) => false);
-//              }
-//            },
-//          ),
-//        ],
-//      ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),

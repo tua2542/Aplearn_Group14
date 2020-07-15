@@ -2,8 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_container/responsive_container.dart';
 import 'package:aplearn_group14/src/Views/home/shared/page.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class newsHire extends StatelessWidget {
+  final Uri _emailLaunchUri = Uri(
+      scheme: 'mailto',
+      path: 'sakdipat3536@gmail.com',
+      queryParameters: {'subject': 'Recruitment_with_Aplearn'});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,7 +76,9 @@ class newsHire extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0)
                   ),
-                  onPressed: () {},
+                  onPressed: () async {
+                    launch(_emailLaunchUri.toString());
+                  },
                   color: Colors.white,
                   textColor: Color(0xFF79AFBB),
                   child: new Text(

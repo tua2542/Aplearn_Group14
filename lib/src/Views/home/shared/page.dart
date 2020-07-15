@@ -1,7 +1,7 @@
+import 'package:aplearn_group14/src/Views/aunthenicate/sign_in.dart';
 import 'package:aplearn_group14/src/Views/learn/academic/academic.dart';
 import 'package:aplearn_group14/src/Views/learn/alternative/alternative.dart';
 import 'package:aplearn_group14/src/Views/learn/study.dart';
-import 'package:aplearn_group14/src/Views/news/newsVote.dart';
 import 'package:aplearn_group14/src/Views/payment/paymentscreen.dart';
 import 'package:aplearn_group14/src/Views/profile/profile.dart';
 import 'package:aplearn_group14/src/Views/vote/vote.dart';
@@ -13,6 +13,7 @@ import 'package:responsive_container/responsive_container.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:aplearn_group14/src/Views/news/newsHire.dart';
 import 'package:aplearn_group14/src/Views/news/newsSubject.dart';
+import 'package:aplearn_group14/src/Views/news/newsVote.dart';
 
 int _currentIndex = 0;
 List cardList = [Item1(), Item2(), Item3()];

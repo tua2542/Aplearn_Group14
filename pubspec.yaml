@@ -92,6 +92,7 @@ flutter:
     - assets/images/news/newsSubject.png
     - assets/images/news/newsVote.png
     - assets/images/news/profilePage.png
+    - assets/images/news/editProfilePage.png
     - assets/images/news/votePage.png
     - assets/images/news/homeNewsHire.png
     - assets/images/news/homeNewsSubject.png

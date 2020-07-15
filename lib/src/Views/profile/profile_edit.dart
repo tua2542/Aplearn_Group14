@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'package:aplearn_group14/src/Views/home/home.dart';
+import 'package:aplearn_group14/src/Views/profile/profile.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -77,12 +79,23 @@ class _ProfileEditState extends State<ProfileEdit> {
             default:
               return Scaffold(
                 appBar: AppBar(
-                  title: Text("Profile"),
+                  elevation: 0.0,
+                  backgroundColor: Color(0xFF9FB3F2),
+                  leading: IconButton(
+                    icon: Icon(Icons.arrow_back_ios, color: Colors.black87),
+                    onPressed: () async {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Profile()));
+                    },
+                  ),
                 ),
                 body: Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
+                      Image.asset('assets/images/news/editProfilePage.png'),
                       SizedBox(height: 20.0),
                       Container(
                           child: Column(
@@ -161,7 +174,10 @@ class _ProfileEditState extends State<ProfileEdit> {
                           )),
                       SizedBox(height: 20.0),
                       RaisedButton(
-                        color: Color(0xff476cfb),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0)
+                        ),
+                        color: Colors.white,
                         onPressed: () {
                           handleUpdateUserProfile();
                           Flushbar(
@@ -178,9 +194,10 @@ class _ProfileEditState extends State<ProfileEdit> {
                         },
                         elevation: 4.0,
                         splashColor: Colors.blueGrey,
-                        child: Text(
+                        textColor: Color(0xFF79AFBB),
+                        child: new Text(
                           'Submit',
-                          style: TextStyle(color: Colors.white, fontSize: 16.0),
+                          style: TextStyle(fontSize: 18),
                         ),
                       ),
                     ],
