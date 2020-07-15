@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class User {
 
   final String uid;
@@ -5,6 +7,7 @@ class User {
   final String firstname;
   final String lastname;
   final String occupation;
+  final String birthdate;
 
-  User({ this.uid, this.email, this.firstname, this.lastname, this.occupation});
+  User({ this.uid, this.email, this.firstname, this.lastname, this.occupation, this.birthdate});
 }

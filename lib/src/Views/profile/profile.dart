@@ -94,6 +94,16 @@ class _ProfileState extends State<Profile> {
                         }).toList(),
                       )),
                       SizedBox(height: 20.0),
+                      Container(
+                          child: Column(
+                        children: snapshot.data.documents
+                            .map((DocumentSnapshot document) {
+                          return new Text(
+                              "Birth Date: " + document['birthdate'],
+                              textScaleFactor: 1.2);
+                        }).toList(),
+                      )),
+                      SizedBox(height: 20.0),
                       RaisedButton(
                         color: Color(0xff476cfb),
                         onPressed: () {

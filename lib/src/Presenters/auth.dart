@@ -1,5 +1,6 @@
 import 'package:aplearn_group14/src/Models/user.dart';
 import 'package:aplearn_group14/src/Presenters/database.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
     
@@ -60,13 +61,13 @@ Future signInWithEmailAndPassword(String email, String password) async {
   }
   //regsiter with email and password
   Future registerWithEmailAndPassword(String email, String password, String firstname, 
-  String lastname, String occupation, String role,String avatar) async {
+  String lastname, String occupation, String role,String avatar,String birthdate) async {
     try {
       AuthResult result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
       FirebaseUser user = result.user;
 
       //create a new document for the user with the uid
-      await DatabaseService(uid: user.uid).updateUserData(email,firstname,lastname,occupation,role,avatar);
+      await DatabaseService(uid: user.uid).updateUserData(email,firstname,lastname,occupation,role,avatar,birthdate);
       return _userFromFirebaseUser(user);
     } catch(e){
       print(e.toString());
@@ -87,3 +88,4 @@ Future signInWithEmailAndPassword(String email, String password) async {
   
 
 }
+

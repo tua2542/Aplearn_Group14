@@ -3,6 +3,7 @@ import 'package:aplearn_group14/src/shared/constants.dart';
 import 'package:aplearn_group14/src/shared/loading.dart';
 import 'package:aplearn_group14/src/wrapper.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class Register extends StatefulWidget {
   @override
@@ -14,6 +15,9 @@ class _RegisterState extends State<Register> {
   final _formKey = GlobalKey<FormState>();
   String error = '';
   bool loading = false;
+  String _selectedDate = 'birth date';
+  TextEditingController dateCtl = TextEditingController();
+
 
   // text field state
   String email = '';
@@ -23,7 +27,29 @@ class _RegisterState extends State<Register> {
   String lastname = '';
   String occupation = '';
   String role = 'student';
-  String avatar = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png';
+  String avatar =
+      'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png';
+  String birthdate = " ";
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime d = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2015, 8),
+      lastDate: DateTime(2101),
+      
+
+    );
+    
+    if (d != null)
+      setState(() {
+        _selectedDate = new DateFormat.yMMMMd("en_US").format(d);
+        dateCtl.text = _selectedDate.toString();
+        birthdate = dateCtl.text;
+        print(birthdate);
+
+      });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,33 +89,50 @@ class _RegisterState extends State<Register> {
                         setState(() => password = val);
                       },
                     ),
-                     SizedBox(height: 10.0),
-                     TextFormField(
+                    SizedBox(height: 10.0),
+                    TextFormField(
                       decoration:
                           textInputDecoration.copyWith(hintText: 'firstname'),
-                      validator: (val) => val.isEmpty ? 'Enter an firstname' : null,
+                      validator: (val) =>
+                          val.isEmpty ? 'Enter an firstname' : null,
                       onChanged: (val) {
                         setState(() => firstname = val);
                       },
                     ),
-                     SizedBox(height: 10.0),
-                     TextFormField(
+                    SizedBox(height: 10.0),
+                    TextFormField(
                       decoration:
                           textInputDecoration.copyWith(hintText: 'lastname'),
-                      validator: (val) => val.isEmpty ? 'Enter an lastname' : null,
+                      validator: (val) =>
+                          val.isEmpty ? 'Enter an lastname' : null,
                       onChanged: (val) {
                         setState(() => lastname = val);
                       },
                     ),
-                     SizedBox(height: 10.0),
-                     TextFormField(
+                    SizedBox(height: 10.0),
+                    TextFormField(
                       decoration:
                           textInputDecoration.copyWith(hintText: 'occupation'),
-                      validator: (val) => val.isEmpty ? 'Enter an occupation' : null,
+                      validator: (val) =>
+                          val.isEmpty ? 'Enter an occupation' : null,
                       onChanged: (val) {
                         setState(() => occupation = val);
                       },
                     ),
+                    SizedBox(height: 10.0),
+                    TextFormField(
+                        controller: dateCtl,
+                        decoration: textInputDecoration.copyWith(
+                            hintText: _selectedDate),
+                        validator: (val) =>
+                            val.isEmpty ? 'Enter an birthdate' : null,
+                        onChanged: (val) {
+                          setState(() => birthdate = val);
+                        },
+                        onTap: () {
+                          _selectDate(context);
+                          FocusScope.of(context).requestFocus(new FocusNode());
+                        }),
                     SizedBox(height: 20.0),
                     RaisedButton(
                         color: Colors.pink[400],
@@ -100,8 +143,16 @@ class _RegisterState extends State<Register> {
                         onPressed: () async {
                           if (_formKey.currentState.validate()) {
                             setState(() => loading = true);
-                            dynamic result = await _auth
-                                .registerWithEmailAndPassword(email,password,firstname,lastname,occupation,role,avatar);
+                            dynamic result =
+                                await _auth.registerWithEmailAndPassword(
+                                    email,
+                                    password,
+                                    firstname,
+                                    lastname,
+                                    occupation,
+                                    role,
+                                    avatar,
+                                    birthdate);
                             if (result == null) {
                               setState(() {
                                 loading = false;
