@@ -1,5 +1,6 @@
 import 'package:aplearn_group14/src/Models/vote_info.dart';
 import 'package:aplearn_group14/src/Views/aunthenicate/sign_in.dart';
+import 'package:aplearn_group14/src/Views/donation/donation.dart';
 import 'package:aplearn_group14/src/Views/learn/academic/academic.dart';
 import 'package:aplearn_group14/src/Views/learn/alternative/alternative.dart';
 import 'package:aplearn_group14/src/Views/learn/study.dart';
@@ -343,7 +344,12 @@ LEARNING''',
                     Expanded(
                       child: RaisedButton(
                         color: Color(0xff56AFBC),
-                        onPressed: () {},
+                        onPressed: () async {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => donation()));
+                        },
                         child: new Row(
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[

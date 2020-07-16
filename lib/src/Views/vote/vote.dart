@@ -12,7 +12,6 @@ import 'package:flutter/material.dart';
 
 class VoteApp extends StatefulWidget {
   @override
-  @override
   _VoteAppState createState() => _VoteAppState();
 }
 
@@ -132,44 +131,6 @@ class _VoteAppState extends State<VoteApp> {
                     style: TextStyle(fontSize: 18),
                   ),
                 ),
-
-//          Container(
-//            margin: EdgeInsets.all(12),
-//            height: maxLines * 24.0,
-//            child: TextField(
-//                maxLines: maxLines,
-//                decoration: InputDecoration(
-//                  hintText: "Enter a message",
-//                  fillColor: Colors.grey[300],
-//                  filled: true,
-//                ),
-//                onChanged: (val) {
-//                  setState(() => message = val);
-//                }),
-//          ),
-//          SizedBox(height: 20.0),
-//          RaisedButton(
-//              color: Colors.pink[400],
-//              child: Text(
-//                'Submit',
-//                style: TextStyle(color: Colors.white),
-//              ),
-//              onPressed: () async {
-//                setState(() => loading = true);
-//                dynamic result =
-//                await CommentProvider().updateCommentData(message);
-//                if (result == null) {
-//                  setState(() {
-//                    loading = false;
-//                    helper = 'Your message is sent';
-//                  });
-//                }
-//              }
-//          ),
-//          Text(
-//            helper,
-//            style: TextStyle(color: Colors.pink, fontSize: 14.0),
-//          ),
               ],
             ),
           );
