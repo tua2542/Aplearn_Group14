@@ -5,6 +5,7 @@ import 'package:aplearn_group14/src/shared/loading.dart';
 import 'package:aplearn_group14/src/wrapper.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class Register extends StatefulWidget {
   @override
@@ -16,6 +17,8 @@ class _RegisterState extends State<Register> {
   final _formKey = GlobalKey<FormState>();
   String error = '';
   bool loading = false;
+  String _selectedDate = 'birth date';
+  TextEditingController dateCtl = TextEditingController();
 
   // text field state
   String email = '';
@@ -25,6 +28,26 @@ class _RegisterState extends State<Register> {
   String lastname = '';
   String occupation = '';
   String role = 'student';
+  String avatar =
+      'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png';
+  String birthdate = " ";
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime d = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2015, 8),
+      lastDate: DateTime(2101),
+    );
+
+    if (d != null)
+      setState(() {
+        _selectedDate = new DateFormat.yMMMMd("en_US").format(d);
+        dateCtl.text = _selectedDate.toString();
+        birthdate = dateCtl.text;
+        print(birthdate);
+      });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -128,6 +151,22 @@ class _RegisterState extends State<Register> {
                           setState(() => occupation = val);
                         },
                       ),
+                      TextFormField(
+                          controller: dateCtl,
+                          decoration: const InputDecoration(
+                            hintText: 'Select your birthdate',
+                            labelText: 'Birthdate',
+                          ),
+                          validator: (val) =>
+                              val.isEmpty ? 'Enter an birthdate' : null,
+                          onChanged: (val) {
+                            setState(() => birthdate = val);
+                          },
+                          onTap: () {
+                            _selectDate(context);
+                            FocusScope.of(context)
+                                .requestFocus(new FocusNode());
+                          }),
                       SizedBox(height: 20.0),
                       Container(
                         height: 40,
@@ -143,7 +182,9 @@ class _RegisterState extends State<Register> {
                                       firstname,
                                       lastname,
                                       occupation,
-                                      role);
+                                      role,
+                                      avatar,
+                                      birthdate);
                               if (result == null) {
                                 setState(() {
                                   loading = false;
