@@ -69,7 +69,8 @@ class _addCourseState extends State<addCourse> {
           ],
         ),
       ),
-      body: Column(
+      body: new SingleChildScrollView(
+        child: new Column(
         children: <Widget>[
           Image.asset('assets/images/news/addCourse.png'),
           SizedBox(height: 30.0),
@@ -126,6 +127,7 @@ class _addCourseState extends State<addCourse> {
             style: TextStyle(color: Colors.pink, fontSize: 14.0),
           ),
         ],
+      ),
       ),
     );
   }
