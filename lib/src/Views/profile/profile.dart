@@ -1,5 +1,8 @@
 import 'package:aplearn_group14/src/Views/aunthenicate/sign_in.dart';
 import 'package:aplearn_group14/src/Views/home/home.dart';
+import 'package:aplearn_group14/src/Views/home/shared/page.dart';
+import 'package:aplearn_group14/src/Views/learn/academic/academic.dart';
+import 'package:aplearn_group14/src/Views/learn/alternative/alternative.dart';
 import 'package:aplearn_group14/src/Views/profile/profile_edit.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -39,6 +42,34 @@ class _ProfileState extends State<Profile> {
               return Text('Loading...');
             default:
               return Scaffold(
+                bottomNavigationBar: new BottomAppBar(
+                  child: new Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      SizedBox(width: 0.5),
+                      IconButton(onPressed: () async {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HomePageTwo()));
+                      }, icon: Icon(Icons.home),),
+                      IconButton(onPressed: () async {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Academic()));
+                      }, icon: Icon(Icons.book),),
+                      IconButton(onPressed: () async {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Alternative()));
+                      }, icon: Icon(Icons.dashboard),),
+                      IconButton(onPressed: () async {}, icon: Icon(Icons.person),),
+                      SizedBox(width: 0.5),
+                    ],
+                  ),
+                ),
                 appBar: AppBar(
                   elevation: 0.0,
                   backgroundColor: Color(0xFF9FB3F2),
@@ -48,7 +79,7 @@ class _ProfileState extends State<Profile> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => Home()));
+                              builder: (context) => HomePageTwo()));
                     },
                   ),
                 ),

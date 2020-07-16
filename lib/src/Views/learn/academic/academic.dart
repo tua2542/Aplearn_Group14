@@ -1,4 +1,7 @@
+import 'package:aplearn_group14/src/Views/home/shared/page.dart';
 import 'package:aplearn_group14/src/Views/learn/academic/subject/thai/thai_screen.dart';
+import 'package:aplearn_group14/src/Views/learn/alternative/alternative.dart';
+import 'package:aplearn_group14/src/Views/profile/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:aplearn_group14/src/Views/home/home.dart';
 import 'package:responsive_container/responsive_container.dart';
@@ -13,11 +16,35 @@ class _AcademicState extends State<Academic> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-//        appBar: AppBar(
         backgroundColor: Color(0xffECF0F9),
-//          elevation: 0.0,
-//          title: Text('Learn'),
-//        ),
+        bottomNavigationBar: new BottomAppBar(
+          child: new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              SizedBox(width: 0.5),
+              IconButton(onPressed: () async {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => HomePageTwo()));
+              }, icon: Icon(Icons.home),),
+              IconButton(onPressed: () {}, icon: Icon(Icons.book),),
+              IconButton(onPressed: () async {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Alternative()));
+              }, icon: Icon(Icons.dashboard),),
+              IconButton(onPressed: () async {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Profile()));
+              }, icon: Icon(Icons.person),),
+              SizedBox(width: 0.5),
+            ],
+          ),
+        ),
         body: Container(
 //          padding: EdgeInsets.symmetric(vertical: 20.0),
           child: SingleChildScrollView(
@@ -32,7 +59,7 @@ class _AcademicState extends State<Academic> {
                   onPressed: () async {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Home()),
+                      MaterialPageRoute(builder: (context) => HomePageTwo()),
                     );
                   },
                 ),

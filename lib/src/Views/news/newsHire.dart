@@ -1,4 +1,5 @@
 import 'package:aplearn_group14/src/Views/home/home.dart';
+import 'package:aplearn_group14/src/Views/home/shared/page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_container/responsive_container.dart';
@@ -22,7 +23,7 @@ class newsHire extends StatelessWidget {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => Home()));
+                    builder: (context) => HomePageTwo()));
           },
         ),
       ),

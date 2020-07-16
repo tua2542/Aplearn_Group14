@@ -156,6 +156,34 @@ class HomePageTwo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: new BottomAppBar(
+        child: new Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            SizedBox(width: 0.5),
+            IconButton(onPressed: () {}, icon: Icon(Icons.home),),
+            IconButton(onPressed: () async {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Academic()));
+            }, icon: Icon(Icons.book),),
+            IconButton(onPressed: () async {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Alternative()));
+            }, icon: Icon(Icons.dashboard),),
+            IconButton(onPressed: () async {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Profile()));
+            }, icon: Icon(Icons.person),),
+            SizedBox(width: 0.5),
+          ],
+        ),
+      ),
       body: Container(
         decoration: new BoxDecoration(
           color: Color(0xffECF0F9),

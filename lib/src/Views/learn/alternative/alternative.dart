@@ -1,4 +1,7 @@
 //import 'package:aplearn_group14/src/Views/learn/academic/subject/thai.dart';
+import 'package:aplearn_group14/src/Views/home/shared/page.dart';
+import 'package:aplearn_group14/src/Views/learn/academic/academic.dart';
+import 'package:aplearn_group14/src/Views/profile/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:aplearn_group14/src/Views/home/home.dart';
 import 'package:responsive_container/responsive_container.dart';
@@ -13,13 +16,36 @@ class _AlternativeState extends State<Alternative> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-//        appBar: AppBar(
+        bottomNavigationBar: new BottomAppBar(
+          child: new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              SizedBox(width: 0.5),
+              IconButton(onPressed: () async {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => HomePageTwo()));
+              }, icon: Icon(Icons.home),),
+              IconButton(onPressed: () async {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Academic()));
+              }, icon: Icon(Icons.book),),
+              IconButton(onPressed: () async {}, icon: Icon(Icons.dashboard),),
+              IconButton(onPressed: () async {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Profile()));
+              }, icon: Icon(Icons.person),),
+              SizedBox(width: 0.5),
+            ],
+          ),
+        ),
         backgroundColor: Color(0xffECF0F9),
-//          elevation: 0.0,
-//          title: Text('Learn'),
-//        ),
         body: Container(
-//          padding: EdgeInsets.symmetric(vertical: 20.0),
           child: SingleChildScrollView(
             child: Column(
               children: <Widget>[
@@ -32,7 +58,7 @@ class _AlternativeState extends State<Alternative> {
                   onPressed: () async {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Home()),
+                      MaterialPageRoute(builder: (context) => HomePageTwo()),
                     );
                   },
                 ),
