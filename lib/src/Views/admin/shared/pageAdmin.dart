@@ -1,5 +1,5 @@
 import 'package:aplearn_group14/src/Views/admin/learn/studyAdmin.dart';
-import 'package:aplearn_group14/src/Views/payment/paymentscreen.dart';
+import 'package:aplearn_group14/src/Views/donation/donation.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -61,7 +61,7 @@ class _BusinessPageAdminState extends State<BusinessPageAdmin> {
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () async {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => PaymentScreen(_auth,user,_db)));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Donate()));
 
                 }),
           ],
