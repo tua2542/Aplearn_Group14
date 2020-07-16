@@ -104,7 +104,7 @@ class _DonateState extends State<Donate> {
                               children: <TextSpan>[
                                 TextSpan(
                                   text:
-                                      'Lorem ipsum dolor sit amet, usu eu laudem possim epicurei. Posse iudicabit appellantur sea ex, et tractatos deseruisse vis, per ut blandit invenire. Nemore habemus offendit te eum. Te vel case paulo volutpat, ad nullam nostrum consectetuer vis, nusquam fuisset principes pro no.' +
+                                      snapshot.data['information'] +
                                           '\n\n',
                                   style: TextStyle(
                                     fontSize: 12,
