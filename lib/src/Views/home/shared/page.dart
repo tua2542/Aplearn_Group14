@@ -1,5 +1,5 @@
+import 'package:aplearn_group14/src/Views/donation/donation.dart';
 import 'package:aplearn_group14/src/Views/learn/study.dart';
-import 'package:aplearn_group14/src/Views/payment/paymentscreen.dart';
 import 'package:aplearn_group14/src/Views/profile/profile.dart';
 import 'package:aplearn_group14/src/Views/vote/vote.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -77,7 +77,7 @@ class _BusinessPageTwoState extends State<BusinessPageTwo> {
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              PaymentScreen(_auth, user, _db)));
+                              Donate()));
                 }),
           ],
         ),
