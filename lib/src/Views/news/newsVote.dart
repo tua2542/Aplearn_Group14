@@ -1,7 +1,7 @@
+import 'package:aplearn_group14/src/Views/home/home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_container/responsive_container.dart';
-import 'package:aplearn_group14/src/Views/home/shared/page.dart';
 
 class newsVote extends StatelessWidget {
   @override
@@ -16,7 +16,7 @@ class newsVote extends StatelessWidget {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => HomePageTwo()));
+                    builder: (context) => Home()));
           },
         ),
       ),
