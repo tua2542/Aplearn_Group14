@@ -66,7 +66,7 @@ class newsSubject extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 15,
+                  height: 20,
                 ),
               ],
             ),

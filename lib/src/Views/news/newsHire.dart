@@ -88,6 +88,9 @@ class newsHire extends StatelessWidget {
                     style: TextStyle(fontSize: 18),
                   ),
                 ),
+                SizedBox(
+                  height: 20,
+                ),
               ],
             ),
           ),

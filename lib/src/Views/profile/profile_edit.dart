@@ -91,7 +91,7 @@ class _ProfileEditState extends State<ProfileEdit> {
                     },
                   ),
                 ),
-                body: Center(
+                body: new SingleChildScrollView(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
@@ -200,6 +200,7 @@ class _ProfileEditState extends State<ProfileEdit> {
                           style: TextStyle(fontSize: 18),
                         ),
                       ),
+                      SizedBox(height: 20.0),
                     ],
                   ),
                 ),

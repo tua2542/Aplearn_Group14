@@ -84,7 +84,7 @@ class _ProfileState extends State<Profile> {
                     },
                   ),
                 ),
-                body: Center(
+                body: new SingleChildScrollView(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
@@ -183,6 +183,7 @@ class _ProfileState extends State<Profile> {
                           style: TextStyle(fontSize: 18),
                         ),
                       ),
+                      SizedBox(height: 20.0),
                     ],
                   ),
                 ),
