@@ -1,3 +1,4 @@
+import 'package:aplearn_group14/src/Models/vote_info.dart';
 import 'package:aplearn_group14/src/Views/aunthenicate/sign_in.dart';
 import 'package:aplearn_group14/src/Views/learn/academic/academic.dart';
 import 'package:aplearn_group14/src/Views/learn/alternative/alternative.dart';
@@ -5,6 +6,7 @@ import 'package:aplearn_group14/src/Views/learn/study.dart';
 import 'package:aplearn_group14/src/Views/payment/paymentscreen.dart';
 import 'package:aplearn_group14/src/Views/profile/profile.dart';
 import 'package:aplearn_group14/src/Views/vote/vote.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -203,7 +205,7 @@ class HomePageTwo extends StatelessWidget {
                 Align(
                   alignment: Alignment.topRight,
                   child: Container(
-                    child: Text(
+                    child: AutoSizeText(
                       "NEWS",
                       style: TextStyle(color: Colors.white, fontSize: 30.0),
                     ),
@@ -276,7 +278,7 @@ class HomePageTwo extends StatelessWidget {
                           children: <Widget>[
                             Padding(
                                 padding: EdgeInsets.only(left: 10.0),
-                                child: new Text(
+                                child: new AutoSizeText(
                                   '''ACADEMIC
 LEARNING''',
                                   style: TextStyle(
@@ -320,7 +322,7 @@ LEARNING''',
                             ),
                             Padding(
                                 padding: EdgeInsets.only(right: 0),
-                                child: new Text(
+                                child: new AutoSizeText(
                                   '''ALTERNATIVE
 LEARNING''',
                                   style: TextStyle(
@@ -347,7 +349,7 @@ LEARNING''',
                           children: <Widget>[
                             Padding(
                                 padding: EdgeInsets.only(left: 0.0),
-                                child: new Text(
+                                child: new AutoSizeText(
                                   '''MAKE A
 DONATE''',
                                   style: TextStyle(
@@ -371,7 +373,12 @@ DONATE''',
                     Expanded(
                       child: RaisedButton(
                         color: Color(0xffFF5960),
-                        onPressed: () {},
+                        onPressed: () async {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => VoteApp()));
+                        },
                         child: new Row(
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
@@ -383,7 +390,7 @@ DONATE''',
                             ),
                             Padding(
                                 padding: EdgeInsets.only(left: 0.0),
-                                child: new Text(
+                                child: new AutoSizeText(
                                   '''GIVE ME
 A VOTE''',
                                   style: TextStyle(

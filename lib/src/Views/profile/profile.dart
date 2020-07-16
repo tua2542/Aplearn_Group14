@@ -4,6 +4,7 @@ import 'package:aplearn_group14/src/Views/home/shared/page.dart';
 import 'package:aplearn_group14/src/Views/learn/academic/academic.dart';
 import 'package:aplearn_group14/src/Views/learn/alternative/alternative.dart';
 import 'package:aplearn_group14/src/Views/profile/profile_edit.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -110,7 +111,7 @@ class _ProfileState extends State<Profile> {
                           child: Column(
                         children: snapshot.data.documents
                             .map((DocumentSnapshot document) {
-                          return new Text(
+                          return new AutoSizeText(
                               "Name: " +
                                   document['firstname'] +
                                   " " +
@@ -123,7 +124,7 @@ class _ProfileState extends State<Profile> {
                           child: Column(
                         children: snapshot.data.documents
                             .map((DocumentSnapshot document) {
-                          return new Text("Email: " + document['email'],
+                          return new AutoSizeText("Email: " + document['email'],
                               textScaleFactor: 1.2);
                         }).toList(),
                       )),
@@ -132,7 +133,7 @@ class _ProfileState extends State<Profile> {
                           child: Column(
                         children: snapshot.data.documents
                             .map((DocumentSnapshot document) {
-                          return new Text(
+                          return new AutoSizeText(
                               "Occupation: " + document['occupation'],
                               textScaleFactor: 1.2);
                         }).toList(),
@@ -142,7 +143,7 @@ class _ProfileState extends State<Profile> {
                           child: Column(
                             children: snapshot.data.documents
                                 .map((DocumentSnapshot document) {
-                              return new Text(
+                              return new AutoSizeText(
                                   "Birth Date: " + document['birthdate'],
                                   textScaleFactor: 1.2);
                             }).toList(),
@@ -160,7 +161,7 @@ class _ProfileState extends State<Profile> {
                         },
                         color: Colors.white,
                         textColor: Color(0xFF79AFBB),
-                        child: new Text(
+                        child: new AutoSizeText(
                           'Edit Profile',
                           style: TextStyle(fontSize: 18),
                         ),
@@ -177,7 +178,7 @@ class _ProfileState extends State<Profile> {
                         },
                         color: Colors.white,
                         textColor: Color(0xFFFF5960),
-                        child: new Text(
+                        child: new AutoSizeText(
                           '   Logout   ',
                           style: TextStyle(fontSize: 18),
                         ),
