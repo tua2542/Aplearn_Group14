@@ -1,3 +1,4 @@
+import 'package:aplearn_group14/src/Views/learn/academic/subject/thai/thai.dart';
 import 'package:aplearn_group14/src/Views/learn/academic/subject/thai/thai_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:aplearn_group14/src/Views/home/home.dart';

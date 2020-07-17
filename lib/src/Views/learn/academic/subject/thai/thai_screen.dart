@@ -1,10 +1,11 @@
+import 'package:aplearn_group14/src/Presenters/review.dart';
 import 'package:aplearn_group14/src/Views/learn/academic/academic.dart';
 import 'package:aplearn_group14/src/Views/learn/academic/subject/thai/unit_widget/unitOne.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_container/responsive_container.dart';
-import 'package:aplearn_group14/src/customer_expansion_title.dart'as custom;
-
+import 'package:aplearn_group14/src/customer_expansion_title.dart' as custom;
 
 class ThaiScreen extends StatefulWidget {
   @override
@@ -12,6 +13,11 @@ class ThaiScreen extends StatefulWidget {
 }
 
 class _ThaiScreenState extends State<ThaiScreen> {
+  final maxLines = 5;
+  String message = '';
+  String helper = '';
+  bool loading = false;
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<DocumentSnapshot>(
@@ -109,8 +115,10 @@ class _ThaiScreenState extends State<ThaiScreen> {
                                           child: Column(
                                             children: <Widget>[
                                               custom.ExpansionTile(
-                                                headerBackgroundColor: Colors.white,
-                                                backgroundColor: Color(0xFFF6F8FC),
+                                                headerBackgroundColor:
+                                                    Colors.white,
+                                                backgroundColor:
+                                                    Color(0xFFF6F8FC),
                                                 title: Text(
                                                   "Unit 1",
                                                   style: TextStyle(
@@ -124,8 +132,10 @@ class _ThaiScreenState extends State<ThaiScreen> {
                                                 ],
                                               ),
                                               custom.ExpansionTile(
-                                                headerBackgroundColor: Colors.white,
-                                                backgroundColor: Color(0xFFF6F8FC),
+                                                headerBackgroundColor:
+                                                    Colors.white,
+                                                backgroundColor:
+                                                    Color(0xFFF6F8FC),
                                                 title: Text(
                                                   "Unit 2",
                                                   style: TextStyle(
@@ -194,9 +204,11 @@ class _ThaiScreenState extends State<ThaiScreen> {
                                                     children: <TextSpan>[
                                                       TextSpan(
                                                         text: snapshot.data[
-                                                                'firstname'] + '  ' +
+                                                                'firstname'] +
+                                                            '  ' +
                                                             snapshot.data[
-                                                                'lastname'] + '\n\n',
+                                                                'lastname'] +
+                                                            '\n\n',
                                                         style: TextStyle(
                                                           fontSize: 18,
                                                           color:
@@ -205,12 +217,12 @@ class _ThaiScreenState extends State<ThaiScreen> {
                                                       ),
                                                       TextSpan(
                                                         text: snapshot.data[
-                                                            'teacherInformation'] +
+                                                                'teacherInformation'] +
                                                             '\n',
                                                         style: TextStyle(
                                                           fontSize: 15,
                                                           color:
-                                                          Color(0xFF707070),
+                                                              Color(0xFF707070),
                                                         ),
                                                       ),
                                                     ],
@@ -219,6 +231,61 @@ class _ThaiScreenState extends State<ThaiScreen> {
                                               ),
                                             ),
                                           ],
+                                        ),
+                                        SizedBox(height: 20),
+                                        Row(
+                                          children: <Widget>[
+                                            SizedBox(width: 35),
+                                            AutoSizeText(
+                                              'Review this course',
+                                              style: TextStyle(
+                                                  color: Color(0xFF707070),
+                                                  fontSize: 15),
+                                            ),
+                                          ],
+                                        ),
+                                        Container(
+                                          margin: EdgeInsets.only(left: 30, right: 30),
+                                          height: maxLines * 24.0,
+                                          child: TextField(
+                                              maxLines: maxLines,
+                                              decoration: const InputDecoration(
+                                                labelText: 'Enter Your Message',
+                                              ),
+                                              onChanged: (val) {
+                                                setState(() => message = val);
+                                              }),
+                                        ),
+                                        SizedBox(height: 15.0),
+                                        RaisedButton(
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(15.0)),
+                                          onPressed: () async {
+                                            setState(() => loading = true);
+                                            dynamic result =
+                                                await ReviewProvider()
+                                                    .updateCommentData(message);
+                                            if (result == null) {
+                                              setState(() {
+                                                loading = false;
+                                                helper = 'Your message is sent';
+                                              });
+                                            }
+                                          },
+                                          color: Colors.white,
+                                          textColor: Color(0xFF9FB3F2),
+                                          child: new Text(
+                                            'Submit',
+                                            style: TextStyle(fontSize: 18),
+                                          ),
+                                        ),
+                                        SizedBox(height: 20.0),
+                                        Text(
+                                          helper,
+                                          style: TextStyle(
+                                              color: Colors.pink,
+                                              fontSize: 14.0),
                                         ),
                                       ],
                                     ),
