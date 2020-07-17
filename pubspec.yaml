@@ -57,7 +57,7 @@ dependencies:
   intl: ^0.16.0
   responsive_container: ^0.0.1
   auto_size_text: ^1.1.0
-  carousel_slider: ^1.4.1
+  carousel_slider: ^2.2.1
 
 dev_dependencies:
   flutter_test:

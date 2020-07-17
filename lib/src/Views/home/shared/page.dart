@@ -213,54 +213,54 @@ class HomePageTwo extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 5),
-                CarouselSlider(
-                  height: 250.0,
-                  initialPage: 0,
-                  enlargeCenterPage: true,
-                  autoPlay: true,
-                  reverse: false,
-                  enableInfiniteScroll: true,
-                  autoPlayInterval: Duration(seconds: 3),
-                  autoPlayAnimationDuration: Duration(milliseconds: 2000),
-                  pauseAutoPlayOnTouch: Duration(seconds: 10),
-                  scrollDirection: Axis.horizontal,
-                  onPageChanged: (index) {
-                    setState(() {
-                      _currentIndex = index;
-                    });
-                  },
-                  items: cardList.map((card) {
-                    return Builder(
-                      builder: (BuildContext context) {
-                        return Container(
-                          width: MediaQuery.of(context).size.width,
-                          margin: EdgeInsets.symmetric(horizontal: 10.0),
-                          child: Card(
-                            color: Color(0xff435BFF),
-                            child: card,
-                          ),
-                        );
-                      },
-                    );
-                  }).toList(),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: map<Widget>(cardList, (index, url) {
-                    return Container(
-                      width: 10.0,
-                      height: 10.0,
-                      margin:
-                          EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: _currentIndex == index
-                            ? Colors.black54
-                            : Colors.grey[500],
-                      ),
-                    );
-                  }),
-                ),
+//                CarouselSlider(
+//                  height: 250.0,
+//                  initialPage: 0,
+//                  enlargeCenterPage: true,
+//                  autoPlay: true,
+//                  reverse: false,
+//                  enableInfiniteScroll: true,
+//                  autoPlayInterval: Duration(seconds: 3),
+//                  autoPlayAnimationDuration: Duration(milliseconds: 2000),
+//                  pauseAutoPlayOnTouch: Duration(seconds: 10),
+//                  scrollDirection: Axis.horizontal,
+//                  onPageChanged: (index) {
+//                    setState(() {
+//                      _currentIndex = index;
+//                    });
+//                  },
+//                  items: cardList.map((card) {
+//                    return Builder(
+//                      builder: (BuildContext context) {
+//                        return Container(
+//                          width: MediaQuery.of(context).size.width,
+//                          margin: EdgeInsets.symmetric(horizontal: 10.0),
+//                          child: Card(
+//                            color: Color(0xff435BFF),
+//                            child: card,
+//                          ),
+//                        );
+//                      },
+//                    );
+//                  }).toList(),
+//                ),
+//                Row(
+//                  mainAxisAlignment: MainAxisAlignment.center,
+//                  children: map<Widget>(cardList, (index, url) {
+//                    return Container(
+//                      width: 10.0,
+//                      height: 10.0,
+//                      margin:
+//                          EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+//                      decoration: BoxDecoration(
+//                        shape: BoxShape.circle,
+//                        color: _currentIndex == index
+//                            ? Colors.black54
+//                            : Colors.grey[500],
+//                      ),
+//                    );
+//                  }),
+//                ),
                 SizedBox(height: 15),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -348,7 +348,7 @@ LEARNING''',
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => donation()));
+                                  builder: (context) => Donate()));
                         },
                         child: new Row(
                           mainAxisSize: MainAxisSize.min,
