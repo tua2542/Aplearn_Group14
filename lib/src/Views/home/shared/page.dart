@@ -213,37 +213,37 @@ class HomePageTwo extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 5),
-//                CarouselSlider(
-//                  height: 250.0,
-//                  initialPage: 0,
-//                  enlargeCenterPage: true,
-//                  autoPlay: true,
-//                  reverse: false,
-//                  enableInfiniteScroll: true,
-//                  autoPlayInterval: Duration(seconds: 3),
-//                  autoPlayAnimationDuration: Duration(milliseconds: 2000),
-//                  pauseAutoPlayOnTouch: Duration(seconds: 10),
-//                  scrollDirection: Axis.horizontal,
-//                  onPageChanged: (index) {
-//                    setState(() {
-//                      _currentIndex = index;
-//                    });
-//                  },
-//                  items: cardList.map((card) {
-//                    return Builder(
-//                      builder: (BuildContext context) {
-//                        return Container(
-//                          width: MediaQuery.of(context).size.width,
-//                          margin: EdgeInsets.symmetric(horizontal: 10.0),
-//                          child: Card(
-//                            color: Color(0xff435BFF),
-//                            child: card,
-//                          ),
-//                        );
-//                      },
-//                    );
-//                  }).toList(),
-//                ),
+                CarouselSlider(
+                  height: 250.0,
+                  initialPage: 0,
+                  enlargeCenterPage: true,
+                  autoPlay: true,
+                  reverse: false,
+                  enableInfiniteScroll: true,
+                  autoPlayInterval: Duration(seconds: 3),
+                  autoPlayAnimationDuration: Duration(milliseconds: 2000),
+                  pauseAutoPlayOnTouch: Duration(seconds: 10),
+                  scrollDirection: Axis.horizontal,
+                  onPageChanged: (index) {
+                    setState(() {
+                      _currentIndex = index;
+                    });
+                  },
+                  items: cardList.map((card) {
+                    return Builder(
+                      builder: (BuildContext context) {
+                        return Container(
+                          width: MediaQuery.of(context).size.width,
+                          margin: EdgeInsets.symmetric(horizontal: 10.0),
+                          child: Card(
+                            color: Color(0xff435BFF),
+                            child: card,
+                          ),
+                        );
+                      },
+                    );
+                  }).toList(),
+                ),
 //                Row(
 //                  mainAxisAlignment: MainAxisAlignment.center,
 //                  children: map<Widget>(cardList, (index, url) {
@@ -261,7 +261,7 @@ class HomePageTwo extends StatelessWidget {
 //                    );
 //                  }),
 //                ),
-                SizedBox(height: 15),
+                SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[

@@ -29,50 +29,11 @@ class _DonateState extends State<Donate> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<DocumentSnapshot>(
-        stream:
-        Firestore.instance.collection('donations').document('camp').snapshots(),
+        stream: Firestore.instance
+            .collection('donations')
+            .document('camp')
+            .snapshots(),
         builder: (context, snapshot) {
-          final List<String> imgList = [
-            snapshot.data['campImage1'],
-            snapshot.data['campImage2'],
-            snapshot.data['campImage3'],
-
-          ];
-          final List<Widget> imageSliders = imgList
-              .map((item) => Container(
-            child: Container(
-              margin: EdgeInsets.all(5.0),
-              child: ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                  child: Stack(
-                    children: <Widget>[
-                      Image.network(item,
-                          fit: BoxFit.cover, width: 1000.0),
-                      Positioned(
-                        bottom: 0.0,
-                        left: 0.0,
-                        right: 0.0,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [
-                                Color.fromARGB(200, 0, 0, 0),
-                                Color.fromARGB(0, 0, 0, 0)
-                              ],
-                              begin: Alignment.bottomCenter,
-                              end: Alignment.topCenter,
-                            ),
-                          ),
-                          padding: EdgeInsets.symmetric(
-                              vertical: 10.0, horizontal: 20.0),
-
-                        ),
-                      ),
-                    ],
-                  )),
-            ),
-          ))
-              .toList();
           return Scaffold(
             appBar: AppBar(
               elevation: 0.0,
@@ -131,78 +92,86 @@ class _DonateState extends State<Donate> {
                   SizedBox(height: 20.0),
                   Container(
                       child: Column(
+                    children: <Widget>[
+                      Column(
                         children: <Widget>[
-                          Column(
-                            children: <Widget>[
-                              CarouselSlider(
-                                options: CarouselOptions(
-                                  autoPlay: true,
-                                  aspectRatio: 2.0,
-                                  enlargeCenterPage: true,
-                                ),
-                                items: imageSliders,
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 20.0),
-                          Container(
-                            padding: EdgeInsets.symmetric(
-                                vertical: 10.0, horizontal: 20.0),
-                            child: Center(
-                              child: RichText(
-                                textAlign: TextAlign.justify,
-                                text: new TextSpan(
-                                  children: <TextSpan>[
-                                    TextSpan(
-                                      text:
-                                      '     Lorem ipsum dolor sit amet, usu eu laudem possim epicurei. Posse iudicabit appellantur sea ex, et tractatos deseruisse vis, per ut blandit invenire. Nemore habemus offendit te eum. Te vel case paulo volutpat, ad nullam nostrum consectetuer vis, nusquam fuisset principes pro no.' +
-                                          '\n',
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        color: Color(0xFF707070),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            padding: EdgeInsets.symmetric(
-                                vertical: 10.0, horizontal: 20.0),
-                            child: Center(
-                              child: RichText(
-                                textAlign: TextAlign.center,
-                                text: new TextSpan(
-                                  children: <TextSpan>[
-                                    TextSpan(
-                                      text: 'Account Name: ' + snapshot.data['AccountName'] + '\n',
-                                      style: TextStyle(
-                                        fontSize: 17,
-                                        color: Color(0xFF2B2B2B),
-                                      ),
-                                    ),
-                                    TextSpan(
-                                      text: 'Bank Account Number: ' + snapshot.data['BankAccountNumber'] + '\n',
-                                      style: TextStyle(
-                                        fontSize: 17,
-                                        color: Color(0xFF2B2B2B),
-                                      ),
-                                    ),
-                                    TextSpan(
-                                      text: 'Bank Name: ' + snapshot.data['BankName'] + '\n',
-                                      style: TextStyle(
-                                        fontSize: 17,
-                                        color: Color(0xFF2B2B2B),
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                          SizedBox(
+                            child: SizedBox(
+                              width: 300.0,
+                              height: 200.0,
+                              child: Image.network(
+                                snapshot.data['campImage'],
+                                fit: BoxFit.fill,
                               ),
                             ),
                           ),
                         ],
-                      )),
+                      ),
+                      SizedBox(height: 20.0),
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                            vertical: 10.0, horizontal: 20.0),
+                        child: Center(
+                          child: RichText(
+                            textAlign: TextAlign.justify,
+                            text: new TextSpan(
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text:
+                                      '     Lorem ipsum dolor sit amet, usu eu laudem possim epicurei. Posse iudicabit appellantur sea ex, et tractatos deseruisse vis, per ut blandit invenire. Nemore habemus offendit te eum. Te vel case paulo volutpat, ad nullam nostrum consectetuer vis, nusquam fuisset principes pro no.' +
+                                          '\n',
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    color: Color(0xFF707070),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                            vertical: 10.0, horizontal: 20.0),
+                        child: Center(
+                          child: RichText(
+                            textAlign: TextAlign.center,
+                            text: new TextSpan(
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: 'Account Name: ' +
+                                      snapshot.data['AccountName'] +
+                                      '\n',
+                                  style: TextStyle(
+                                    fontSize: 17,
+                                    color: Color(0xFF2B2B2B),
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: 'Bank Account Number: ' +
+                                      snapshot.data['BankAccountNumber'] +
+                                      '\n',
+                                  style: TextStyle(
+                                    fontSize: 17,
+                                    color: Color(0xFF2B2B2B),
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: 'Bank Name: ' +
+                                      snapshot.data['BankName'] +
+                                      '\n',
+                                  style: TextStyle(
+                                    fontSize: 17,
+                                    color: Color(0xFF2B2B2B),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  )),
                   SizedBox(height: 40.0),
                 ],
               ),
