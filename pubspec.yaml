@@ -58,6 +58,12 @@ dependencies:
   responsive_container: ^0.0.1
   auto_size_text: ^1.1.0
   carousel_slider: ^1.4.1
+  flutter_launcher_icons: ^0.7.2
+
+flutter_icons:
+  android: true
+  image_path: "assets/images/icon/acaIcon.png"
+
 
 dev_dependencies:
   flutter_test:
