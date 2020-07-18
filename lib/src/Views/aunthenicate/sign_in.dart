@@ -1,7 +1,6 @@
 import 'package:aplearn_group14/src/Presenters/auth.dart';
 import 'package:aplearn_group14/src/Views/aunthenicate/register.dart';
 import 'package:aplearn_group14/src/Views/aunthenicate/sign_in_admin.dart';
-import 'package:aplearn_group14/src/shared/constants.dart';
 import 'package:aplearn_group14/src/shared/loading.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/cupertino.dart';
