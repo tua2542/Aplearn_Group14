@@ -38,14 +38,14 @@ class _UnitOneWidgetState extends State<UnitOneWidget> {
 
     super.initState();
   }
-  
+
   @override
   Widget build(BuildContext context) {
-   return _getListView();
+    return _getListView();
   }
-  
+
   final ScrollController _scrollController = ScrollController();
-  
+
   Widget _getListView() {
     return ListView.builder(
         controller: _scrollController,
@@ -118,5 +118,4 @@ class _UnitOneWidgetState extends State<UnitOneWidget> {
               });
         });
   }
- 
 }

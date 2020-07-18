@@ -1,18 +1,20 @@
 import 'package:aplearn_group14/src/Presenters/review.dart';
 import 'package:aplearn_group14/src/Views/learn/academic/academic.dart';
-import 'package:aplearn_group14/src/Views/learn/academic/subject/thai/unit_widget/unitOne.dart';
+import 'package:aplearn_group14/src/Views/learn/alternative/subject/guitar/unit_widget/unitOne.dart';
+import 'package:aplearn_group14/src/Views/learn/alternative/alternative.dart';
+import 'package:aplearn_group14/src/Views/profile/profile.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_container/responsive_container.dart';
 import 'package:aplearn_group14/src/customer_expansion_title.dart' as custom;
 
-class ThaiScreen extends StatefulWidget {
+class guitarScreen extends StatefulWidget {
   @override
-  _ThaiScreenState createState() => _ThaiScreenState();
+  _guitarScreenState createState() => _guitarScreenState();
 }
 
-class _ThaiScreenState extends State<ThaiScreen> {
+class _guitarScreenState extends State<guitarScreen> {
   final maxLines = 5;
   String message = '';
   String helper = '';
@@ -32,12 +34,47 @@ class _ThaiScreenState extends State<ThaiScreen> {
 
             default:
               return Scaffold(
+                bottomNavigationBar: new BottomAppBar(
+                  child: new Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      SizedBox(width: 0.5),
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.home),
+                      ),
+                      IconButton(
+                        onPressed: () async {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Academic()));
+                        },
+                        icon: Icon(Icons.book),
+                      ),
+                      IconButton(
+                        onPressed: () async {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Alternative()));
+                        },
+                        icon: Icon(Icons.dashboard),
+                      ),
+                      IconButton(
+                        onPressed: () async {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Profile()));
+                        },
+                        icon: Icon(Icons.person),
+                      ),
+                      SizedBox(width: 0.5),
+                    ],
+                  ),
+                ),
                 backgroundColor: Color(0xffECF0F9),
-//                appBar: AppBar(
-//                  backgroundColor: Colors.brown[400],
-//                  elevation: 0.0,
-//                  title: Text('THAI (Middle school)'),
-//                ),
                 body: Container(
                   child: SingleChildScrollView(
                     child: Column(
@@ -52,7 +89,7 @@ class _ThaiScreenState extends State<ThaiScreen> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Academic()),
+                                  builder: (context) => Alternative()),
                             );
                           },
                         ),
@@ -61,14 +98,14 @@ class _ThaiScreenState extends State<ThaiScreen> {
                             ResponsiveContainer(
                               padding: EdgeInsets.only(top: 25),
                               child: Image.asset(
-                                "assets/images/title/math-midTitle.png",
+                                "assets/images/title/guitarTitle.png",
                               ),
                               widthPercent: 50.0,
                               heightPercent: 25,
                             ),
                             ResponsiveContainer(
                               child: Image.asset(
-                                "assets/images/icon/math-midIcon.png",
+                                "assets/images/icon/guitarIcon.png",
                               ),
                               widthPercent: 50.0,
                               heightPercent: 25,
@@ -245,7 +282,8 @@ class _ThaiScreenState extends State<ThaiScreen> {
                                           ],
                                         ),
                                         Container(
-                                          margin: EdgeInsets.only(left: 30, right: 30),
+                                          margin: EdgeInsets.only(
+                                              left: 30, right: 30),
                                           height: maxLines * 24.0,
                                           child: TextField(
                                               maxLines: maxLines,
