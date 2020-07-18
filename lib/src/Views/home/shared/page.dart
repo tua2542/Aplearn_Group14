@@ -5,7 +5,6 @@ import 'package:aplearn_group14/src/Views/learn/alternative/alternative.dart';
 import 'package:aplearn_group14/src/Views/profile/profile.dart';
 import 'package:aplearn_group14/src/Views/vote/vote.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -423,9 +422,7 @@ class BusinessPageTwo extends StatefulWidget {
 }
 
 class _BusinessPageTwoState extends State<BusinessPageTwo> {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
   FirebaseUser user;
-  final Firestore _db = Firestore.instance;
 
   @override
   Widget build(BuildContext context) {

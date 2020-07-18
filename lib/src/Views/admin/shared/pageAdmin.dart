@@ -1,6 +1,5 @@
 import 'package:aplearn_group14/src/Views/admin/learn/studyAdmin.dart';
 import 'package:aplearn_group14/src/Views/donation/donation.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -40,9 +39,7 @@ class BusinessPageAdmin extends StatefulWidget {
 }
 
 class _BusinessPageAdminState extends State<BusinessPageAdmin> {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
   FirebaseUser user;
-  final Firestore _db = Firestore.instance;
   
   
   @override

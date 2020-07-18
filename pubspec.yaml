@@ -87,6 +87,7 @@ flutter:
     - assets/images/icon/math-midIcon.png
     - assets/images/icon/phyIcon.png
     - assets/images/icon/sciIcon.png
+    - assets/images/icon/admin.png
     - assets/images/news/donationPage.png
     - assets/images/news/newsHire.png
     - assets/images/news/newsSubject.png

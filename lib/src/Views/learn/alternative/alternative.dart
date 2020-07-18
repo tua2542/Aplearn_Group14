@@ -3,7 +3,6 @@ import 'package:aplearn_group14/src/Views/home/shared/page.dart';
 import 'package:aplearn_group14/src/Views/learn/academic/academic.dart';
 import 'package:aplearn_group14/src/Views/profile/profile.dart';
 import 'package:flutter/material.dart';
-import 'package:aplearn_group14/src/Views/home/home.dart';
 import 'package:responsive_container/responsive_container.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 

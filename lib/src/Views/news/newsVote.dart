@@ -1,4 +1,3 @@
-import 'package:aplearn_group14/src/Views/home/home.dart';
 import 'package:aplearn_group14/src/Views/home/shared/page.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
