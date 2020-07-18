@@ -119,6 +119,7 @@ flutter:
     - assets/images/title/math-highTitle.png
     - assets/images/title/math-midTitle.png
     - assets/images/title/phyTitle.png
+    - assets/images/title/sciTitle.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

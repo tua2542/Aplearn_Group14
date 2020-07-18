@@ -98,7 +98,7 @@ class _scienceScreenState extends State<scienceScreen> {
                             ResponsiveContainer(
                               padding: EdgeInsets.only(top: 25),
                               child: Image.asset(
-                                "assets/images/title/sciIcon.png",
+                                "assets/images/title/sciTitle.png",
                               ),
                               widthPercent: 50.0,
                               heightPercent: 25,
