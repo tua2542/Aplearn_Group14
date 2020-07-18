@@ -1,6 +1,5 @@
 import 'package:aplearn_group14/src/Models/user.dart';
 import 'package:aplearn_group14/src/Views/aunthenicate/sign_in.dart';
-import 'package:aplearn_group14/src/Views/home/home.dart';
 import 'package:aplearn_group14/src/Views/home/shared/page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

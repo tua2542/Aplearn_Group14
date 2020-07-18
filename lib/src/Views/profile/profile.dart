@@ -1,5 +1,4 @@
 import 'package:aplearn_group14/src/Views/aunthenicate/sign_in.dart';
-import 'package:aplearn_group14/src/Views/home/home.dart';
 import 'package:aplearn_group14/src/Views/home/shared/page.dart';
 import 'package:aplearn_group14/src/Views/learn/academic/academic.dart';
 import 'package:aplearn_group14/src/Views/learn/alternative/alternative.dart';

@@ -1,9 +1,6 @@
-import 'package:aplearn_group14/src/Models/vote_info.dart';
-import 'package:aplearn_group14/src/Views/aunthenicate/sign_in.dart';
 import 'package:aplearn_group14/src/Views/donation/donation.dart';
 import 'package:aplearn_group14/src/Views/learn/academic/academic.dart';
 import 'package:aplearn_group14/src/Views/learn/alternative/alternative.dart';
-import 'package:aplearn_group14/src/Views/learn/study.dart';
 import 'package:aplearn_group14/src/Views/payment/paymentscreen.dart';
 import 'package:aplearn_group14/src/Views/profile/profile.dart';
 import 'package:aplearn_group14/src/Views/vote/vote.dart';
