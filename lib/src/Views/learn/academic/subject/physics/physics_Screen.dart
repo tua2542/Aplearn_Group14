@@ -1,18 +1,20 @@
 import 'package:aplearn_group14/src/Presenters/review.dart';
 import 'package:aplearn_group14/src/Views/learn/academic/academic.dart';
-import 'package:aplearn_group14/src/Views/learn/academic/subject/thai/unit_widget/unitOne.dart';
+import 'package:aplearn_group14/src/Views/learn/academic/subject/mathMiddle/unit_widget/unitOne.dart';
+import 'package:aplearn_group14/src/Views/learn/alternative/alternative.dart';
+import 'package:aplearn_group14/src/Views/profile/profile.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_container/responsive_container.dart';
 import 'package:aplearn_group14/src/customer_expansion_title.dart' as custom;
 
-class ThaiScreen extends StatefulWidget {
+class physicsScreen extends StatefulWidget {
   @override
-  _ThaiScreenState createState() => _ThaiScreenState();
+  _physicsScreenState createState() => _physicsScreenState();
 }
 
-class _ThaiScreenState extends State<ThaiScreen> {
+class _physicsScreenState extends State<physicsScreen> {
   final maxLines = 5;
   String message = '';
   String helper = '';
@@ -32,12 +34,47 @@ class _ThaiScreenState extends State<ThaiScreen> {
 
             default:
               return Scaffold(
+                bottomNavigationBar: new BottomAppBar(
+                  child: new Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      SizedBox(width: 0.5),
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.home),
+                      ),
+                      IconButton(
+                        onPressed: () async {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Academic()));
+                        },
+                        icon: Icon(Icons.book),
+                      ),
+                      IconButton(
+                        onPressed: () async {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Alternative()));
+                        },
+                        icon: Icon(Icons.dashboard),
+                      ),
+                      IconButton(
+                        onPressed: () async {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Profile()));
+                        },
+                        icon: Icon(Icons.person),
+                      ),
+                      SizedBox(width: 0.5),
+                    ],
+                  ),
+                ),
                 backgroundColor: Color(0xffECF0F9),
-//                appBar: AppBar(
-//                  backgroundColor: Colors.brown[400],
-//                  elevation: 0.0,
-//                  title: Text('THAI (Middle school)'),
-//                ),
                 body: Container(
                   child: SingleChildScrollView(
                     child: Column(
@@ -61,14 +98,14 @@ class _ThaiScreenState extends State<ThaiScreen> {
                             ResponsiveContainer(
                               padding: EdgeInsets.only(top: 25),
                               child: Image.asset(
-                                "assets/images/title/math-midTitle.png",
+                                "assets/images/title/phyTitle.png",
                               ),
                               widthPercent: 50.0,
                               heightPercent: 25,
                             ),
                             ResponsiveContainer(
                               child: Image.asset(
-                                "assets/images/icon/math-midIcon.png",
+                                "assets/images/icon/phyIcon.png",
                               ),
                               widthPercent: 50.0,
                               heightPercent: 25,
@@ -98,7 +135,7 @@ class _ThaiScreenState extends State<ThaiScreen> {
                                               children: <TextSpan>[
                                                 TextSpan(
                                                   text: snapshot.data[
-                                                          'courseInformation '] +
+                                                  'courseInformation '] +
                                                       '\n\n',
                                                   style: TextStyle(
                                                     fontSize: 18,
@@ -116,15 +153,15 @@ class _ThaiScreenState extends State<ThaiScreen> {
                                             children: <Widget>[
                                               custom.ExpansionTile(
                                                 headerBackgroundColor:
-                                                    Colors.white,
+                                                Colors.white,
                                                 backgroundColor:
-                                                    Color(0xFFF6F8FC),
+                                                Color(0xFFF6F8FC),
                                                 title: Text(
                                                   "Unit 1",
                                                   style: TextStyle(
                                                       fontSize: 18.0,
                                                       fontWeight:
-                                                          FontWeight.bold,
+                                                      FontWeight.bold,
                                                       color: Color(0xFF707070)),
                                                 ),
                                                 children: <Widget>[
@@ -133,15 +170,15 @@ class _ThaiScreenState extends State<ThaiScreen> {
                                               ),
                                               custom.ExpansionTile(
                                                 headerBackgroundColor:
-                                                    Colors.white,
+                                                Colors.white,
                                                 backgroundColor:
-                                                    Color(0xFFF6F8FC),
+                                                Color(0xFFF6F8FC),
                                                 title: Text(
                                                   "Unit 2",
                                                   style: TextStyle(
                                                       fontSize: 18.0,
                                                       fontWeight:
-                                                          FontWeight.bold,
+                                                      FontWeight.bold,
                                                       color: Color(0xFF707070)),
                                                 ),
                                                 children: <Widget>[
@@ -166,11 +203,11 @@ class _ThaiScreenState extends State<ThaiScreen> {
                                                   children: <TextSpan>[
                                                     TextSpan(
                                                       text:
-                                                          'Instructor' + '\n\n',
+                                                      'Instructor' + '\n\n',
                                                       style: TextStyle(
                                                         fontSize: 16,
                                                         color:
-                                                            Color(0xFF707070),
+                                                        Color(0xFF707070),
                                                       ),
                                                     ),
                                                   ],
@@ -204,25 +241,25 @@ class _ThaiScreenState extends State<ThaiScreen> {
                                                     children: <TextSpan>[
                                                       TextSpan(
                                                         text: snapshot.data[
-                                                                'firstname'] +
+                                                        'firstname'] +
                                                             '  ' +
                                                             snapshot.data[
-                                                                'lastname'] +
+                                                            'lastname'] +
                                                             '\n\n',
                                                         style: TextStyle(
                                                           fontSize: 18,
                                                           color:
-                                                              Color(0xFF707070),
+                                                          Color(0xFF707070),
                                                         ),
                                                       ),
                                                       TextSpan(
                                                         text: snapshot.data[
-                                                                'teacherInformation'] +
+                                                        'teacherInformation'] +
                                                             '\n',
                                                         style: TextStyle(
                                                           fontSize: 15,
                                                           color:
-                                                              Color(0xFF707070),
+                                                          Color(0xFF707070),
                                                         ),
                                                       ),
                                                     ],
@@ -245,7 +282,8 @@ class _ThaiScreenState extends State<ThaiScreen> {
                                           ],
                                         ),
                                         Container(
-                                          margin: EdgeInsets.only(left: 30, right: 30),
+                                          margin: EdgeInsets.only(
+                                              left: 30, right: 30),
                                           height: maxLines * 24.0,
                                           child: TextField(
                                               maxLines: maxLines,
@@ -260,12 +298,12 @@ class _ThaiScreenState extends State<ThaiScreen> {
                                         RaisedButton(
                                           shape: RoundedRectangleBorder(
                                               borderRadius:
-                                                  BorderRadius.circular(15.0)),
+                                              BorderRadius.circular(15.0)),
                                           onPressed: () async {
                                             setState(() => loading = true);
                                             dynamic result =
-                                                await ReviewProvider()
-                                                    .updateCommentData(message);
+                                            await ReviewProvider()
+                                                .updateCommentData(message);
                                             if (result == null) {
                                               setState(() {
                                                 loading = false;

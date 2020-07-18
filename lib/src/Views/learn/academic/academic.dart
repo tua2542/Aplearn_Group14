@@ -1,5 +1,11 @@
-import 'package:aplearn_group14/src/Views/learn/academic/subject/thai/thai.dart';
-import 'package:aplearn_group14/src/Views/learn/academic/subject/thai/thai_screen.dart';
+import 'package:aplearn_group14/src/Views/learn/academic/subject/biology/biology_Screen.dart';
+import 'package:aplearn_group14/src/Views/learn/academic/subject/chemistry/chem_Screen.dart';
+import 'package:aplearn_group14/src/Views/learn/academic/subject/mathHigh/mathHigh_Screen.dart';
+import 'package:aplearn_group14/src/Views/learn/academic/subject/mathMiddle/mathMid_Screen.dart';
+import 'package:aplearn_group14/src/Views/learn/academic/subject/physics/physics_Screen.dart';
+import 'package:aplearn_group14/src/Views/learn/academic/subject/science/science_Screen.dart';
+import 'package:aplearn_group14/src/Views/learn/alternative/alternative.dart';
+import 'package:aplearn_group14/src/Views/profile/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:aplearn_group14/src/Views/home/home.dart';
 import 'package:responsive_container/responsive_container.dart';
@@ -14,13 +20,42 @@ class _AcademicState extends State<Academic> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-//        appBar: AppBar(
+        bottomNavigationBar: new BottomAppBar(
+          child: new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              SizedBox(width: 0.5),
+              IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.home),
+              ),
+              IconButton(
+                onPressed: () async {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Academic()));
+                },
+                icon: Icon(Icons.book),
+              ),
+              IconButton(
+                onPressed: () async {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Alternative()));
+                },
+                icon: Icon(Icons.dashboard),
+              ),
+              IconButton(
+                onPressed: () async {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Profile()));
+                },
+                icon: Icon(Icons.person),
+              ),
+              SizedBox(width: 0.5),
+            ],
+          ),
+        ),
         backgroundColor: Color(0xffECF0F9),
-//          elevation: 0.0,
-//          title: Text('Learn'),
-//        ),
         body: Container(
-//          padding: EdgeInsets.symmetric(vertical: 20.0),
           child: SingleChildScrollView(
             child: Column(
               children: <Widget>[
@@ -89,7 +124,7 @@ class _AcademicState extends State<Academic> {
                                       maxLines: 1,
                                       minFontSize: 19,
                                       style:
-                                      TextStyle(color: Color(0xff707070)),
+                                          TextStyle(color: Color(0xff707070)),
                                       textAlign: TextAlign.left,
                                     ),
                                   ),
@@ -101,7 +136,7 @@ class _AcademicState extends State<Academic> {
                                       maxLines: 1,
                                       minFontSize: 12,
                                       style:
-                                      TextStyle(color: Color(0xff707070)),
+                                          TextStyle(color: Color(0xff707070)),
                                       textAlign: TextAlign.left,
                                     ),
                                   ),
@@ -120,7 +155,7 @@ class _AcademicState extends State<Academic> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => ThaiScreen()));
+                                      builder: (context) => MathMidScreen()));
                             })),
                     ResponsiveContainer(
                       widthPercent: 4,
@@ -174,10 +209,10 @@ class _AcademicState extends State<Academic> {
                               ),
                             ),
                             onPressed: () async {
-//                              Navigator.push(
-//                                  context,
-//                                  MaterialPageRoute(
-//                                      builder: (context) => Thai()));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => MathHighScreen()));
                             })),
                   ]),
                 ),
@@ -241,10 +276,10 @@ class _AcademicState extends State<Academic> {
                               ),
                             ),
                             onPressed: () async {
-//                              Navigator.push(
-//                                  context,
-//                                  MaterialPageRoute(
-//                                      builder: (context) => Thai()));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => scienceScreen()));
                             })),
                     ResponsiveContainer(
                       widthPercent: 3,
@@ -272,7 +307,7 @@ class _AcademicState extends State<Academic> {
                                       maxLines: 1,
                                       minFontSize: 19,
                                       style:
-                                      TextStyle(color: Color(0xff707070)),
+                                          TextStyle(color: Color(0xff707070)),
                                       textAlign: TextAlign.left,
                                     ),
                                   ),
@@ -284,7 +319,7 @@ class _AcademicState extends State<Academic> {
                                       maxLines: 1,
                                       minFontSize: 12,
                                       style:
-                                      TextStyle(color: Color(0xff707070)),
+                                          TextStyle(color: Color(0xff707070)),
                                       textAlign: TextAlign.left,
                                     ),
                                   ),
@@ -300,10 +335,10 @@ class _AcademicState extends State<Academic> {
                               ),
                             ),
                             onPressed: () async {
-//                              Navigator.push(
-//                                  context,
-//                                  MaterialPageRoute(
-//                                      builder: (context) => Thai()));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => physicsScreen()));
                             })),
                   ]),
                 ),
@@ -341,7 +376,7 @@ class _AcademicState extends State<Academic> {
                                       maxLines: 1,
                                       minFontSize: 19,
                                       style:
-                                      TextStyle(color: Color(0xff707070)),
+                                          TextStyle(color: Color(0xff707070)),
                                       textAlign: TextAlign.left,
                                     ),
                                   ),
@@ -353,7 +388,7 @@ class _AcademicState extends State<Academic> {
                                       maxLines: 1,
                                       minFontSize: 12,
                                       style:
-                                      TextStyle(color: Color(0xff707070)),
+                                          TextStyle(color: Color(0xff707070)),
                                       textAlign: TextAlign.left,
                                     ),
                                   ),
@@ -369,10 +404,10 @@ class _AcademicState extends State<Academic> {
                               ),
                             ),
                             onPressed: () async {
-//                              Navigator.push(
-//                                  context,
-//                                  MaterialPageRoute(
-//                                      builder: (context) => Thai()));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => chemScreen()));
                             })),
                     ResponsiveContainer(
                       widthPercent: 4,
@@ -426,10 +461,10 @@ class _AcademicState extends State<Academic> {
                               ),
                             ),
                             onPressed: () async {
-//                              Navigator.push(
-//                                  context,
-//                                  MaterialPageRoute(
-//                                      builder: (context) => Thai()));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => bioScreen()));
                             })),
                   ]),
                 ),
@@ -440,7 +475,6 @@ class _AcademicState extends State<Academic> {
               ],
             ),
           ),
-
         ));
   }
 }
