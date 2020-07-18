@@ -1,6 +1,7 @@
-//import 'package:aplearn_group14/src/Views/learn/academic/subject/thai.dart';
 import 'package:aplearn_group14/src/Views/home/shared/page.dart';
 import 'package:aplearn_group14/src/Views/learn/academic/academic.dart';
+import 'package:aplearn_group14/src/Views/learn/alternative/subject/drawing/drawing_Screen.dart';
+import 'package:aplearn_group14/src/Views/learn/alternative/subject/guitar/guitar_Screen.dart';
 import 'package:aplearn_group14/src/Views/profile/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_container/responsive_container.dart';
@@ -20,25 +21,31 @@ class _AlternativeState extends State<Alternative> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               SizedBox(width: 0.5),
-              IconButton(onPressed: () async {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => HomePageTwo()));
-              }, icon: Icon(Icons.home),),
-              IconButton(onPressed: () async {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Academic()));
-              }, icon: Icon(Icons.book),),
-              IconButton(onPressed: () async {}, icon: Icon(Icons.dashboard),),
-              IconButton(onPressed: () async {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Profile()));
-              }, icon: Icon(Icons.person),),
+              IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.home),
+              ),
+              IconButton(
+                onPressed: () async {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Academic()));
+                },
+                icon: Icon(Icons.book),
+              ),
+              IconButton(
+                onPressed: () async {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Alternative()));
+                },
+                icon: Icon(Icons.dashboard),
+              ),
+              IconButton(
+                onPressed: () async {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Profile()));
+                },
+                icon: Icon(Icons.person),
+              ),
               SizedBox(width: 0.5),
             ],
           ),
@@ -113,7 +120,7 @@ class _AlternativeState extends State<Alternative> {
                                       maxLines: 1,
                                       minFontSize: 19,
                                       style:
-                                      TextStyle(color: Color(0xff707070)),
+                                          TextStyle(color: Color(0xff707070)),
                                       textAlign: TextAlign.left,
                                     ),
                                   ),
@@ -125,7 +132,7 @@ class _AlternativeState extends State<Alternative> {
                                       maxLines: 1,
                                       minFontSize: 12,
                                       style:
-                                      TextStyle(color: Color(0xff707070)),
+                                          TextStyle(color: Color(0xff707070)),
                                       textAlign: TextAlign.left,
                                     ),
                                   ),
@@ -141,10 +148,10 @@ class _AlternativeState extends State<Alternative> {
                               ),
                             ),
                             onPressed: () async {
-//                              Navigator.push(
-//                                  context,
-//                                  MaterialPageRoute(
-//                                      builder: (context) => Thai()));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => guitarScreen()));
                             })),
                     ResponsiveContainer(
                       widthPercent: 4,
@@ -198,14 +205,13 @@ class _AlternativeState extends State<Alternative> {
                               ),
                             ),
                             onPressed: () async {
-//                              Navigator.push(
-//                                  context,
-//                                  MaterialPageRoute(
-//                                      builder: (context) => Thai()));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => drawingScreen()));
                             })),
                   ]),
                 ),
-
 
                 ResponsiveContainer(
                   widthPercent: 100,
@@ -214,29 +220,6 @@ class _AlternativeState extends State<Alternative> {
               ],
             ),
           ),
-
-//        padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
-//        child: Column(
-//          children: <Widget>[
-//             RaisedButton(
-//                color: Colors.pink[400],
-//                child: Text(
-//                  'Thai',
-//                  style: TextStyle(color: Colors.white),
-//                ),
-//                onPressed: () async {
-//                Navigator.push(context, MaterialPageRoute(builder: (context) => Thai()));
-//
-//                }),
-//                RaisedButton(
-//                color: Colors.pink[400],
-//                child: Text(
-//                  'Math',
-//                  style: TextStyle(color: Colors.white),
-//                ),
-//                onPressed: () async {}),
-//          ],
-//        ),
         ));
   }
 }

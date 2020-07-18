@@ -1,36 +1,17 @@
-import 'package:aplearn_group14/src/Models/video_info.dart';
-import 'package:aplearn_group14/src/Presenters/encoding_provider.dart';
-import 'package:aplearn_group14/src/Presenters/video_provider.dart';
-import 'package:aplearn_group14/src/Views/video_player/player.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:transparent_image/transparent_image.dart';
+import 'package:aplearn_group14/src/Models/video_info.dart';
+import 'package:aplearn_group14/src/Presenters/video_provider.dart';
+import 'package:aplearn_group14/src/Presenters/encoding_provider.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import 'package:aplearn_group14/src/Views/video_player/player.dart';
 
-class Thai extends StatelessWidget {
+class UnitOneWidget extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Thai',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Thai Lesson'),
-    );
-  }
+  _UnitOneWidgetState createState() => _UnitOneWidgetState();
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
+class _UnitOneWidgetState extends State<UnitOneWidget> {
   final thumbWidth = 100;
   final thumbHeight = 150;
   List<VideoInfo> _videos = <VideoInfo>[];
@@ -58,8 +39,17 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
   }
 
-  Widget _getListView()  {
+  @override
+  Widget build(BuildContext context) {
+    return _getListView();
+  }
+
+  final ScrollController _scrollController = ScrollController();
+
+  Widget _getListView() {
     return ListView.builder(
+        controller: _scrollController,
+        shrinkWrap: true,
         padding: const EdgeInsets.all(8),
         itemCount: _videos.length,
         itemBuilder: (BuildContext context, int index) {
@@ -97,20 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             children: <Widget>[
                               Stack(
                                 children: <Widget>[
-                                  Container(
-                                    // width: thumbWidth.toDouble(),
-                                    // height: thumbHeight.toDouble(),
-                                    // child: Center(
-                                    //     child: CircularProgressIndicator()),
-                                  ),
-                                  // ClipRRect(
-                                  //   borderRadius:
-                                  //       new BorderRadius.circular(8.0),
-                                  //   child: FadeInImage.memoryNetwork(
-                                  //     placeholder: kTransparentImage,
-                                  //     image: video.thumbUrl,
-                                  //   ),
-                                  // ),
+                                  Container(),
                                 ],
                               ),
                               Expanded(
@@ -140,15 +117,5 @@ class _MyHomePageState extends State<MyHomePage> {
                 );
               });
         });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(child: _getListView()),
-    );
   }
 }
