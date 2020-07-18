@@ -151,7 +151,6 @@ class DrawCircle extends CustomPainter {
   }
 }
 
-// ignore: must_be_immutable
 class HomePageTwo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

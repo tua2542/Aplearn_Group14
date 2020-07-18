@@ -3,6 +3,7 @@ import 'package:aplearn_group14/src/Views/home/shared/page.dart';
 import 'package:aplearn_group14/src/Views/learn/academic/academic.dart';
 import 'package:aplearn_group14/src/Views/learn/alternative/alternative.dart';
 import 'package:aplearn_group14/src/Views/profile/profile_edit.dart';
+import 'package:aplearn_group14/src/wrapper.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -170,9 +171,13 @@ class _ProfileState extends State<Profile> {
                   RaisedButton(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15.0)),
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => SignIn()));
+                    onPressed: () async {
+                      if (_auth.signOut() != null) {
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(builder: (context) => Wrapper()),
+                            (route) => false);
+                      }
                     },
                     color: Colors.white,
                     textColor: Color(0xFFFF5960),
