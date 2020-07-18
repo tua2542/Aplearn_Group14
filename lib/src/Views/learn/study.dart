@@ -1,4 +1,5 @@
 import 'package:aplearn_group14/src/Views/learn/academic/academic.dart';
+import 'package:aplearn_group14/src/Views/learn/alternative/alternative.dart';
 import 'package:flutter/material.dart';
 
 
@@ -35,7 +36,9 @@ class _StudyState extends State<Study> {
                   'Alternative Learning',
                   style: TextStyle(color: Colors.white),
                 ),
-                onPressed: () async {}),
+                    onPressed: () async {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Alternative()));
+                    }),
           ],
         ),
 

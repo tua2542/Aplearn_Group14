@@ -1,6 +1,6 @@
 import 'package:aplearn_group14/src/Presenters/review.dart';
 import 'package:aplearn_group14/src/Views/learn/academic/academic.dart';
-import 'package:aplearn_group14/src/Views/learn/academic/subject/chemistry/unit_widget/unitOne.dart';
+import 'package:aplearn_group14/src/Views/learn/alternative/subject/drawing/unit_widget/unitOne.dart';
 import 'package:aplearn_group14/src/Views/learn/alternative/alternative.dart';
 import 'package:aplearn_group14/src/Views/profile/profile.dart';
 import 'package:auto_size_text/auto_size_text.dart';
@@ -9,12 +9,12 @@ import 'package:flutter/material.dart';
 import 'package:responsive_container/responsive_container.dart';
 import 'package:aplearn_group14/src/customer_expansion_title.dart' as custom;
 
-class chemScreen extends StatefulWidget {
+class drawingScreen extends StatefulWidget {
   @override
-  _chemScreenState createState() => _chemScreenState();
+  _drawingScreenState createState() => _drawingScreenState();
 }
 
-class _chemScreenState extends State<chemScreen> {
+class _drawingScreenState extends State<drawingScreen> {
   final maxLines = 5;
   String message = '';
   String helper = '';
@@ -89,7 +89,7 @@ class _chemScreenState extends State<chemScreen> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Academic()),
+                                  builder: (context) => Alternative()),
                             );
                           },
                         ),
@@ -98,14 +98,14 @@ class _chemScreenState extends State<chemScreen> {
                             ResponsiveContainer(
                               padding: EdgeInsets.only(top: 25),
                               child: Image.asset(
-                                "assets/images/title/chemTitle.png",
+                                "assets/images/title/drawIcon.png",
                               ),
                               widthPercent: 50.0,
                               heightPercent: 25,
                             ),
                             ResponsiveContainer(
                               child: Image.asset(
-                                "assets/images/icon/chemIcon.png",
+                                "assets/images/icon/drawIcon.png",
                               ),
                               widthPercent: 50.0,
                               heightPercent: 25,
@@ -135,7 +135,7 @@ class _chemScreenState extends State<chemScreen> {
                                               children: <TextSpan>[
                                                 TextSpan(
                                                   text: snapshot.data[
-                                                  'courseInformation '] +
+                                                          'courseInformation '] +
                                                       '\n\n',
                                                   style: TextStyle(
                                                     fontSize: 18,
@@ -153,15 +153,15 @@ class _chemScreenState extends State<chemScreen> {
                                             children: <Widget>[
                                               custom.ExpansionTile(
                                                 headerBackgroundColor:
-                                                Colors.white,
+                                                    Colors.white,
                                                 backgroundColor:
-                                                Color(0xFFF6F8FC),
+                                                    Color(0xFFF6F8FC),
                                                 title: Text(
                                                   "Unit 1",
                                                   style: TextStyle(
                                                       fontSize: 18.0,
                                                       fontWeight:
-                                                      FontWeight.bold,
+                                                          FontWeight.bold,
                                                       color: Color(0xFF707070)),
                                                 ),
                                                 children: <Widget>[
@@ -170,15 +170,15 @@ class _chemScreenState extends State<chemScreen> {
                                               ),
                                               custom.ExpansionTile(
                                                 headerBackgroundColor:
-                                                Colors.white,
+                                                    Colors.white,
                                                 backgroundColor:
-                                                Color(0xFFF6F8FC),
+                                                    Color(0xFFF6F8FC),
                                                 title: Text(
                                                   "Unit 2",
                                                   style: TextStyle(
                                                       fontSize: 18.0,
                                                       fontWeight:
-                                                      FontWeight.bold,
+                                                          FontWeight.bold,
                                                       color: Color(0xFF707070)),
                                                 ),
                                                 children: <Widget>[
@@ -203,11 +203,11 @@ class _chemScreenState extends State<chemScreen> {
                                                   children: <TextSpan>[
                                                     TextSpan(
                                                       text:
-                                                      'Instructor' + '\n\n',
+                                                          'Instructor' + '\n\n',
                                                       style: TextStyle(
                                                         fontSize: 16,
                                                         color:
-                                                        Color(0xFF707070),
+                                                            Color(0xFF707070),
                                                       ),
                                                     ),
                                                   ],
@@ -241,25 +241,25 @@ class _chemScreenState extends State<chemScreen> {
                                                     children: <TextSpan>[
                                                       TextSpan(
                                                         text: snapshot.data[
-                                                        'firstname'] +
+                                                                'firstname'] +
                                                             '  ' +
                                                             snapshot.data[
-                                                            'lastname'] +
+                                                                'lastname'] +
                                                             '\n\n',
                                                         style: TextStyle(
                                                           fontSize: 18,
                                                           color:
-                                                          Color(0xFF707070),
+                                                              Color(0xFF707070),
                                                         ),
                                                       ),
                                                       TextSpan(
                                                         text: snapshot.data[
-                                                        'teacherInformation'] +
+                                                                'teacherInformation'] +
                                                             '\n',
                                                         style: TextStyle(
                                                           fontSize: 15,
                                                           color:
-                                                          Color(0xFF707070),
+                                                              Color(0xFF707070),
                                                         ),
                                                       ),
                                                     ],
@@ -298,12 +298,12 @@ class _chemScreenState extends State<chemScreen> {
                                         RaisedButton(
                                           shape: RoundedRectangleBorder(
                                               borderRadius:
-                                              BorderRadius.circular(15.0)),
+                                                  BorderRadius.circular(15.0)),
                                           onPressed: () async {
                                             setState(() => loading = true);
                                             dynamic result =
-                                            await ReviewProvider()
-                                                .updateCommentData(message);
+                                                await ReviewProvider()
+                                                    .updateCommentData(message);
                                             if (result == null) {
                                               setState(() {
                                                 loading = false;
