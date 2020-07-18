@@ -71,139 +71,128 @@ class _ProfileEditState extends State<ProfileEdit> {
             .where("uid", isEqualTo: user.uid)
             .snapshots(),
         builder: (context, snapshot) {
-          if (snapshot.hasError) return Text('Error: ${snapshot.error}');
-          switch (snapshot.connectionState) {
-            case ConnectionState.waiting:
-              return Text('Loading...');
-            default:
-              return Scaffold(
-                appBar: AppBar(
-                  elevation: 0.0,
-                  backgroundColor: Color(0xFF9FB3F2),
-                  leading: IconButton(
-                    icon: Icon(Icons.arrow_back_ios, color: Colors.black87),
-                    onPressed: () async {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Profile()));
+          return Scaffold(
+            appBar: AppBar(
+              elevation: 0.0,
+              backgroundColor: Color(0xFF9FB3F2),
+              leading: IconButton(
+                icon: Icon(Icons.arrow_back_ios, color: Colors.black87),
+                onPressed: () async {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Profile()));
+                },
+              ),
+            ),
+            body: new SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Image.asset('assets/images/news/editProfilePage.png'),
+                  SizedBox(height: 20.0),
+                  Container(
+                      child: Column(
+                    children: snapshot.data.documents
+                        .map((DocumentSnapshot document) {
+                      return ClipOval(
+                        child: SizedBox(
+                          width: 120.0,
+                          height: 120.0,
+                          child: (_image != null)
+                              ? Image.file(
+                                  _image,
+                                  fit: BoxFit.fill,
+                                )
+                              : Image.network(
+                                  document['avatar'],
+                                  fit: BoxFit.fill,
+                                ),
+                        ),
+                      );
+                    }).toList(),
+                  )),
+                  Padding(
+                    padding: EdgeInsets.only(top: 5.0),
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.camera_enhance,
+                        size: 30.0,
+                      ),
+                      onPressed: () {
+                        getImage();
+                      },
+                    ),
+                  ),
+                  SizedBox(height: 20.0),
+                  Container(
+                      child: Column(
+                    children: snapshot.data.documents
+                        .map((DocumentSnapshot document) {
+                      return new Text(
+                          "Name: " +
+                              document['firstname'] +
+                              " " +
+                              document['lastname'],
+                          textScaleFactor: 1.2);
+                    }).toList(),
+                  )),
+                  SizedBox(height: 20.0),
+                  Container(
+                      child: Column(
+                    children: snapshot.data.documents
+                        .map((DocumentSnapshot document) {
+                      return new Text("Email: " + document['email'],
+                          textScaleFactor: 1.2);
+                    }).toList(),
+                  )),
+                  SizedBox(height: 20.0),
+                  Container(
+                      child: Column(
+                    children: snapshot.data.documents
+                        .map((DocumentSnapshot document) {
+                      return new Text("Occupation: " + document['occupation'],
+                          textScaleFactor: 1.2);
+                    }).toList(),
+                  )),
+                  SizedBox(height: 20.0),
+                  Container(
+                      child: Column(
+                    children: snapshot.data.documents
+                        .map((DocumentSnapshot document) {
+                      return new Text("Birth Date: " + document['birthdate'],
+                          textScaleFactor: 1.2);
+                    }).toList(),
+                  )),
+                  SizedBox(height: 20.0),
+                  RaisedButton(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0)),
+                    color: Colors.white,
+                    onPressed: () {
+                      handleUpdateUserProfile();
+                      Flushbar(
+                        message: 'Profile Picture Uploaded',
+                        icon: Icon(
+                          Icons.info_outline,
+                          size: 28,
+                          color: Colors.blue.shade300,
+                        ),
+                        leftBarIndicatorColor: Colors.blue.shade300,
+                        duration: Duration(seconds: 3),
+                      ).show(context);
                     },
+                    elevation: 4.0,
+                    splashColor: Colors.blueGrey,
+                    textColor: Color(0xFF79AFBB),
+                    child: new Text(
+                      'Submit',
+                      style: TextStyle(fontSize: 18),
+                    ),
                   ),
-                ),
-                body: new SingleChildScrollView(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Image.asset('assets/images/news/editProfilePage.png'),
-                      SizedBox(height: 20.0),
-                      Container(
-                          child: Column(
-                        children: snapshot.data.documents
-                            .map((DocumentSnapshot document) {
-                          return ClipOval(
-                            child: SizedBox(
-                              width: 120.0,
-                              height: 120.0,
-                              child: (_image != null)
-                                  ? Image.file(
-                                      _image,
-                                      fit: BoxFit.fill,
-                                    )
-                                  : Image.network(
-                                      document['avatar'],
-                                      fit: BoxFit.fill,
-                                    ),
-                            ),
-                          );
-                        }).toList(),
-                      )),
-                      Padding(
-                        padding: EdgeInsets.only(top: 5.0),
-                        child: IconButton(
-                          icon: Icon(
-                            Icons.camera_enhance,
-                            size: 30.0,
-                          ),
-                          onPressed: () {
-                            getImage();
-                          },
-                        ),
-                      ),
-                      SizedBox(height: 20.0),
-                      Container(
-                          child: Column(
-                        children: snapshot.data.documents
-                            .map((DocumentSnapshot document) {
-                          return new Text(
-                              "Name: " +
-                                  document['firstname'] +
-                                  " " +
-                                  document['lastname'],
-                              textScaleFactor: 1.2);
-                        }).toList(),
-                      )),
-                      SizedBox(height: 20.0),
-                      Container(
-                          child: Column(
-                        children: snapshot.data.documents
-                            .map((DocumentSnapshot document) {
-                          return new Text("Email: " + document['email'],
-                              textScaleFactor: 1.2);
-                        }).toList(),
-                      )),
-                      SizedBox(height: 20.0),
-                      Container(
-                          child: Column(
-                        children: snapshot.data.documents
-                            .map((DocumentSnapshot document) {
-                          return new Text(
-                              "Occupation: " + document['occupation'],
-                              textScaleFactor: 1.2);
-                        }).toList(),
-                      )),
-                      SizedBox(height: 20.0),
-                      Container(
-                          child: Column(
-                            children: snapshot.data.documents
-                                .map((DocumentSnapshot document) {
-                              return new Text(
-                                  "Birth Date: " + document['birthdate'],
-                                  textScaleFactor: 1.2);
-                            }).toList(),
-                          )),
-                      SizedBox(height: 20.0),
-                      RaisedButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15.0)
-                        ),
-                        color: Colors.white,
-                        onPressed: () {
-                          handleUpdateUserProfile();
-                          Flushbar(
-                            message: 'Profile Picture Uploaded',
-                            icon: Icon(
-                              Icons.info_outline,
-                              size: 28,
-                              color: Colors.blue.shade300,
-                            ),
-                            leftBarIndicatorColor: Colors.blue.shade300,
-                            duration: Duration(seconds: 3),
-                          ).show(context);
-                        },
-                        elevation: 4.0,
-                        splashColor: Colors.blueGrey,
-                        textColor: Color(0xFF79AFBB),
-                        child: new Text(
-                          'Submit',
-                          style: TextStyle(fontSize: 18),
-                        ),
-                      ),
-                      SizedBox(height: 20.0),
-                    ],
-                  ),
-                ),
-              );
-          }
+                  SizedBox(height: 20.0),
+                ],
+              ),
+            ),
+          );
         });
   }
 }
