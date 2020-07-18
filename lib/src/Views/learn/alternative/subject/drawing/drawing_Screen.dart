@@ -98,7 +98,7 @@ class _drawingScreenState extends State<drawingScreen> {
                             ResponsiveContainer(
                               padding: EdgeInsets.only(top: 25),
                               child: Image.asset(
-                                "assets/images/title/drawIcon.png",
+                                "assets/images/title/drawTitle.png",
                               ),
                               widthPercent: 50.0,
                               heightPercent: 25,
