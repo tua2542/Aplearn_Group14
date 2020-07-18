@@ -29,7 +29,7 @@ class _VoteWidgetState extends State<VoteWidget> {
 
   Widget _buildList(BuildContext context, List<DocumentSnapshot> snapshot) {
     return ListView(
-      padding: const EdgeInsets.only(top: 20.0),
+      padding: const EdgeInsets.only(top: 5.0),
       children: snapshot.map((data) => _buildListItem(context, data)).toList(),
     );
   }

@@ -55,8 +55,9 @@ dependencies:
   loading: ^1.0.2
   charts_flutter: ^0.9.0
   intl: ^0.16.0
-
-
+  responsive_container: ^0.0.1
+  auto_size_text: ^1.1.0
+  carousel_slider: ^1.4.1
 
 dev_dependencies:
   flutter_test:
@@ -77,7 +78,6 @@ flutter:
     - assets/images/background/bg1.jpg
     - assets/images/background/bg2.jpg
     - assets/images/icon/acaIcon.png
-    - assets/images/icon/admin.png
     - assets/images/icon/alterIcon.png
     - assets/images/icon/bioIcon.png
     - assets/images/icon/chemIcon.png
@@ -92,22 +92,27 @@ flutter:
     - assets/images/news/newsSubject.png
     - assets/images/news/newsVote.png
     - assets/images/news/profilePage.png
+    - assets/images/news/editProfilePage.png
     - assets/images/news/votePage.png
+    - assets/images/news/homeNewsHire.png
+    - assets/images/news/homeNewsSubject.png
+    - assets/images/news/homeNewsVote.jpg
+    - assets/images/news/addCourse.png
     - assets/images/picture/academicLearning.png
     - assets/images/picture/alternativeLearning.jpg
     - assets/images/picture/donate.jpg
     - assets/images/picture/vote.png
+    - assets/images/picture/school.jpg
     - assets/images/title/acaTitle.png
     - assets/images/title/alterTitle.png
     - assets/images/title/bioTitle.png
     - assets/images/title/chemTitle.png
-    - assets/images/title/drawTitle.png
+    - assets/images/title/drawIcon.png
     - assets/images/title/guitarTitle.png
     - assets/images/title/math-highTitle.png
     - assets/images/title/math-midTitle.png
     - assets/images/title/phyTitle.png
-    - assets/images/title/sciTitle.png
-
+    - assets/images/title/sciIcon.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -61,11 +61,7 @@ class GeneratedLocalizationsDelegate extends LocalizationsDelegate<S> {
           S.current = const $en();
           return SynchronousFuture<S>(S.current);
         default:
-<<<<<<< HEAD
-          // NO-OP.
-=======
         // NO-OP.
->>>>>>> aunthenicate
       }
     }
     S.current = const S();
@@ -124,12 +120,7 @@ class GeneratedLocalizationsDelegate extends LocalizationsDelegate<S> {
 }
 
 String getLang(Locale l) => l == null
-<<<<<<< HEAD
-  ? null
-  : l.countryCode != null && l.countryCode.isEmpty
-=======
     ? null
     : l.countryCode != null && l.countryCode.isEmpty
->>>>>>> aunthenicate
     ? l.languageCode
     : l.toString();

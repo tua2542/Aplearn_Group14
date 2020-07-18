@@ -1,3 +1,6 @@
+import 'package:aplearn_group14/src/Views/home/shared/page.dart';
+import 'package:aplearn_group14/src/Views/learn/academic/academic.dart';
+import 'package:aplearn_group14/src/Views/learn/alternative/alternative.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -32,12 +35,59 @@ class _DonateState extends State<Donate> {
         builder: (context, snapshot) {
           return Scaffold(
             appBar: AppBar(
-              title: Text("Donation"),
+              elevation: 0.0,
+              backgroundColor: Color(0xFF79AFBB),
+              leading: IconButton(
+                icon: Icon(Icons.arrow_back_ios, color: Colors.black87),
+                onPressed: () async {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => HomePageTwo()));
+                },
+              ),
             ),
-            body: Center(
+            bottomNavigationBar: new BottomAppBar(
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  SizedBox(width: 0.5),
+                  IconButton(
+                    onPressed: () async {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HomePageTwo()));
+                    },
+                    icon: Icon(Icons.home),
+                  ),
+                  IconButton(
+                    onPressed: () async {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Academic()));
+                    },
+                    icon: Icon(Icons.book),
+                  ),
+                  IconButton(
+                    onPressed: () async {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Alternative()));
+                    },
+                    icon: Icon(Icons.dashboard),
+                  ),
+                  IconButton(
+                    onPressed: () async {},
+                    icon: Icon(Icons.person),
+                  ),
+                  SizedBox(width: 0.5),
+                ],
+              ),
+            ),
+            body: new SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
+                  Image.asset('assets/images/news/donationPage.png'),
                   SizedBox(height: 20.0),
                   Container(
                       child: Column(
@@ -62,13 +112,16 @@ class _DonateState extends State<Donate> {
                             vertical: 10.0, horizontal: 20.0),
                         child: Center(
                           child: RichText(
+                            textAlign: TextAlign.justify,
                             text: new TextSpan(
                               children: <TextSpan>[
                                 TextSpan(
-                                  text: snapshot.data['information'] + '\n\n',
+                                  text:
+                                      '     '+ snapshot.data['information'] +
+                                          '\n',
                                   style: TextStyle(
-                                    fontSize: 12,
-                                    color: Colors.black,
+                                    fontSize: 15,
+                                    color: Color(0xFF707070),
                                   ),
                                 ),
                               ],
@@ -81,33 +134,34 @@ class _DonateState extends State<Donate> {
                             vertical: 10.0, horizontal: 20.0),
                         child: Center(
                           child: RichText(
+                            textAlign: TextAlign.center,
                             text: new TextSpan(
                               children: <TextSpan>[
                                 TextSpan(
                                   text: 'Account Name: ' +
                                       snapshot.data['AccountName'] +
-                                      '\n\n',
+                                      '\n',
                                   style: TextStyle(
-                                    fontSize: 12,
-                                    color: Colors.black,
+                                    fontSize: 17,
+                                    color: Color(0xFF2B2B2B),
                                   ),
                                 ),
                                 TextSpan(
                                   text: 'Bank Account Number: ' +
                                       snapshot.data['BankAccountNumber'] +
-                                      '\n\n',
+                                      '\n',
                                   style: TextStyle(
-                                    fontSize: 12,
-                                    color: Colors.black,
+                                    fontSize: 17,
+                                    color: Color(0xFF2B2B2B),
                                   ),
                                 ),
                                 TextSpan(
                                   text: 'Bank Name: ' +
                                       snapshot.data['BankName'] +
-                                      '\n\n',
+                                      '\n',
                                   style: TextStyle(
-                                    fontSize: 12,
-                                    color: Colors.black,
+                                    fontSize: 17,
+                                    color: Color(0xFF2B2B2B),
                                   ),
                                 ),
                               ],
@@ -117,6 +171,7 @@ class _DonateState extends State<Donate> {
                       ),
                     ],
                   )),
+                  SizedBox(height: 40.0),
                 ],
               ),
             ),
