@@ -3,7 +3,6 @@ import 'package:aplearn_group14/src/Views/learn/academic/subject/thai/thai_scree
 import 'package:aplearn_group14/src/Views/learn/alternative/alternative.dart';
 import 'package:aplearn_group14/src/Views/profile/profile.dart';
 import 'package:flutter/material.dart';
-import 'package:aplearn_group14/src/Views/home/home.dart';
 import 'package:responsive_container/responsive_container.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
@@ -109,7 +108,7 @@ class _AcademicState extends State<Academic> {
                                   ),
                                   ResponsiveContainer(
                                     widthPercent: 100,
-                                    heightPercent: 3,
+                                    heightPercent: 4,
                                     child: AutoSizeText(
                                       'Mathematics',
                                       maxLines: 1,
@@ -168,7 +167,7 @@ class _AcademicState extends State<Academic> {
                                   ),
                                   ResponsiveContainer(
                                     widthPercent: 100,
-                                    heightPercent: 3,
+                                    heightPercent: 4,
                                     child: AutoSizeText(
                                       'Mathematics',
                                       maxLines: 1,
@@ -235,7 +234,7 @@ class _AcademicState extends State<Academic> {
                                   ),
                                   ResponsiveContainer(
                                     widthPercent: 100,
-                                    heightPercent: 3,
+                                    heightPercent: 4,
                                     child: AutoSizeText(
                                       'Science',
                                       maxLines: 1,
@@ -292,7 +291,7 @@ class _AcademicState extends State<Academic> {
                                   ),
                                   ResponsiveContainer(
                                     widthPercent: 100,
-                                    heightPercent: 3,
+                                    heightPercent: 4,
                                     child: AutoSizeText(
                                       'Physics',
                                       maxLines: 1,
@@ -361,7 +360,7 @@ class _AcademicState extends State<Academic> {
                                   ),
                                   ResponsiveContainer(
                                     widthPercent: 100,
-                                    heightPercent: 3,
+                                    heightPercent: 4,
                                     child: AutoSizeText(
                                       'Chemistry',
                                       maxLines: 1,
@@ -420,7 +419,7 @@ class _AcademicState extends State<Academic> {
                                   ),
                                   ResponsiveContainer(
                                     widthPercent: 100,
-                                    heightPercent: 3,
+                                    heightPercent: 4,
                                     child: AutoSizeText(
                                       'Biology',
                                       maxLines: 1,
